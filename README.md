@@ -3,4 +3,4 @@ The purpose of Loanalytic-Web is to make the life of the borrower easy by simply
 
 # Loanalytic ER Diagram
 
-![](https://github.com/Gouthami-pasham/Loanalytic/blob/master/Loanalytics_Web%20ER%20Diagram.jpeg)
+![](https://github.com/Gouthami-pasham/Loanalytic/blob/master/Initial%20Draft%20of%20Design%20ER%20Diagram.jpeg)
