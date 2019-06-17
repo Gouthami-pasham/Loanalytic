@@ -63,17 +63,17 @@ The major features of Loanalytic database system as shown in the below diagram.
 ![](https://github.com/Gouthami-pasham/Loanalytic/blob/master/Initial%20Draft%20of%20Design%20ER%20Diagram.jpeg)
 
 The above figure gives a complete description of all the entities used in the application. The description of each entity and the relation between them is specified below:
-## USER:
+## User:
 The user entity has all the attributes to store the information related to the user. It stores the information provided by the user during the registration phase.
-## ADMIN:
+## Admin:
 The admin entity stores the details related to the employees working for the application. The attributes include the employee id, first name, last name, email and designation. 
-## DOCUMENT:
+## Document:
 Document entity stores the required documents uploaded by the user and later the admin can view these documents.
-## APPLICATIONS:
+## Applications:
 Application table has all the information related to the application. 
-##LOAN TYPE:
+##Loan Type:
 Loan type is a master table, it has all the in information related to loans. Admin can introduce new loans into the system through the interface.
-## CREDIT SCORE:
+## Credit Score:
 Credit score is a master entity, it stores the basic information of Credit score and the range associated with it.
 
 
