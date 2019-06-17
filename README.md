@@ -56,7 +56,7 @@ The purpose of Loanalytic-Web is to make the life of the borrower easy by simply
 
   </table>
 
-  
+
 # Loanalytic ER Diagram :
 The major features of Loanalytic database system as shown in the below diagram.
 
@@ -78,35 +78,5 @@ Credit score is a master entity, it stores the basic information of Credit score
 
 
 
-## Team Members Contributions:
 
-<table style="width:100%;border: 1px solid black;">
-<tr>
-<th>Team Members Names</th>	
-<th>Phone Numbers</th>
-<th>Email Address</th>
-  </tr>
-  <tr>
-  <td>Gangadhar Adusumalli</td>
-  </tr>
-  <tr>
-  <td>Vamsee Krishna Gangapatnam</td>
-  </tr>
-  <tr>
-  <td>Keerthi Sree Kukunoor</td>
-  </tr>
-  <tr>
-  <td>Gouthami Pasham</td>
-  </tr>
-  <tr>
-  <td>Taraka Raviteja Peddi</td>
-  </tr>
-  <tr>
-  <td>Himabindu Poshala</td>
-  </tr>
-  <tr>
-  <td>Meghana Putta</td>
-  </tr>
-
-  </table>
 
