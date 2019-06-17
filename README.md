@@ -13,6 +13,27 @@ The purpose of Loanalytic-Web is to make the life of the borrower easy by simply
 <th>Phone Numbers</th>
 <th>Email Address</th>
   </tr>
-  
+  <tr>
+  <td>Gangadhar Adusumalli</td>
+  </tr>
+  <tr>
+  <td>Vamsee Krishna Gangapatnam</td>
+  </tr>
+  <tr>
+  <td>Keerthi Sree Kukunoor</td>
+  </tr>
+  <tr>
+  <td>Gouthami Pasham</td>
+  </tr>
+  <tr>
+  <td>Taraka Raviteja Peddi</td>
+  </tr>
+  <tr>
+  <td>Himabindu Poshala</td>
+  </tr>
+  <tr>
+  <td>Meghana Putta</td>
+  </tr>
+
   </table>
 
