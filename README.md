@@ -12,16 +12,17 @@ The purpose of Loanalytic-Web is to make the life of the borrower easy by simply
 <th>Phone Numbers</th>
   </tr>
   <tr>
-  <td>Gangadhar Adusumalli</td>
-  <td>Senior Architect</td>
-  <td>S533704@nwmissouri.edu</td>
-  <td>+16605280325</td>
-  </tr>
-  <tr>
   <td>Vamsee Krishna Gangapatnam</td>
   <td>Project Manager</td>
   <td>S533908@nwmissouri.edu</td>
   <td>+16605281049</td>
+  </tr>
+  <tr>
+   <td>Gangadhar Adusumalli</td>
+  <td>Senior Architect</td>
+  <td>S533704@nwmissouri.edu</td>
+  <td>+16605280325</td>
+  
   </tr>
   <tr>
   <td>Keerthi Sree Kukunoor</td>
