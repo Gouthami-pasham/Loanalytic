@@ -48,7 +48,7 @@ The purpose of Loanalytic-Web is to make the life of the borrower easy by simply
   <td>+14694121091</td>
   </tr>
   <tr>
-  <td>Meghana Putta</td>
+  <td>Meghana Putta </td>
   <td>Software Engineer</td>
   <td>S533909@nwmissouri.edu</td>
   <td>+14243979577</td>
