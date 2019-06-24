@@ -1,0 +1,63 @@
+a.navbar-brand {
+    color: #fff !important;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    background: #0b3c5d  !important;
+}
+
+a.nav-link {
+    color: #fff !important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active {
+    color:  #008f95 !important;
+    background: #fff;
+}
+
+nav.mb-1.navbar.navbar-expand-lg.navbar-dark.default-color {
+    background: #008f95 !important;
+}
+
+.btn-outline-success {
+    color: white;
+    border: 1px solid white;
+}
+
+.container-fluid {
+    margin-top: 56px;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+}
+.cardlower {
+    width: 98%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+span.navbar-text {
+    color: white !important;
+    margin-left: 120px;
+}
+
+footer#myFooter {
+    margin-top: 50px;
+}
+
+.carousel-caption.d-none.d-md-block {
+    background: #ffffffbf;
+    color: #df004f;
+}
+
+button.submit-btn:focus, button.submit-btn:hover{
+    outline:none;
+    background: #b10d48;
+}
+
+
+a.navbar-brand {
+    font-weight: normal;
+}
