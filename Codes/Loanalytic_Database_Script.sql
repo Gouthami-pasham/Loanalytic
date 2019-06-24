@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `tb_admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `tb_admin` (
-  `Employee_ID` int(11) NOT NULL,
+  `Employee_ID` int(20) NOT NULL,
   `FirstName` varchar(45) NOT NULL,
   `LastName` varchar(45) NOT NULL,
   `Email` varchar(45) NOT NULL,
