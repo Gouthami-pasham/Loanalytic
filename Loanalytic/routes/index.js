@@ -22,6 +22,11 @@ router.get('/register', function (req, res) {
 
 
 });
+router.get('/uploadfile', function (req, res) {
+    res.render('uploadfile.ejs', { title: 'Register' });
+
+
+});
 
 
 module.exports = router;
