@@ -14,23 +14,12 @@
             <span class="bg-light">OR</span>
         </p>
         <form  class="needs-validation"  novalidate> 
+         <!-- form-group// -->
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="Full name" type="text"  pattern="[a-zA-Z]*( [a-zA-Z]*)?" required>
-            <div class="valid-feedback">
-                Looks good!
-               </div>
-               <div class="invalid-feedback">
-                 Please provide Name / valid Name!
-               </div>
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-             </div>
-            <input name="" class="form-control" placeholder="Username" type="text"  pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required >
+            <input name="" class="form-control" placeholder="First Name" type="text"  pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required >
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -40,16 +29,16 @@
         </div>
         <div class="form-group input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="Email address" type="email"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <input name="" class="form-control" placeholder="Last Name" type="text"  pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required >
             <div class="valid-feedback">
                 Looks good!
                </div>
                <div class="invalid-feedback">
-                 Please provide Email / valid Email!
+                 Please provide Username / valid Username!
                </div>
-        </div> <!-- form-group// -->
+        </div>
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -57,20 +46,72 @@
             <select class="custom-select" style="max-width: 120px;">
                 <option selected="">+1</option>
             </select>
-            <input name="" class="form-control" placeholder="Phone number"  type="tel" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required>
+            <input name="" class="form-control" placeholder="Phone Number"  type="tel" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required>
             <div class="valid-feedback">
                 Looks good!
                </div>
                <div class="invalid-feedback">
                  Please provide phone number / valid phone number!
                </div>
+            </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+             </div>
+            <input name="" class="form-control" placeholder="Email Address" type="email"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <div class="valid-feedback">
+                Looks good!
+               </div>
+               <div class="invalid-feedback">
+                 Please provide Email / valid Email!
+               </div>
         </div> <!-- form-group// -->
+        
+        
+               <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-birthday-cake"></i> </span>
+                 </div>
+                <input name="" class="form-control" placeholder="Email Address" type="date"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <div class="valid-feedback">
+                    Looks good!
+                   </div>
+                   <div class="invalid-feedback">
+                     Please provide DOB / valid DOB!
+                   </div>
+            
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-id-card"></i> </span>
+            </div>
+            <input name="" class="form-control" placeholder="SSN"  type="tel" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required>
+            <div class="valid-feedback">
+                Looks good!
+               </div>
+               <div class="invalid-feedback">
+                 Please provide SSN / valid SSN!
+               </div>
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-users"></i> </span>
+            </div>
+            <input name="" class="form-control" placeholder="Employment Status"  type="text" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required>
+            <div class="valid-feedback">
+                Looks good!
+               </div>
+               <div class="invalid-feedback">
+                 Please provide status / valid status!
+               </div>
+        </div>
+         <!-- form-group// -->
        <!-- form-group end.// -->
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
-            <input class="form-control" placeholder="Create password" type="password" required>
+            <input class="form-control" placeholder="Create Password" type="password" required>
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -78,6 +119,18 @@
                  Please provide valid password
                </div>
         </div> <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input class="form-control" placeholder="Confirm Password" type="password" required>
+            <div class="valid-feedback">
+                Looks good!
+               </div>
+               <div class="invalid-feedback">
+                 Please provide valid password
+               </div>
+        </div>
        <!-- form-group// -->                                      
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block"> Register  </button>
