@@ -13,6 +13,11 @@ router.get('/adminhome', function (req, res) {
  
 
 });
+router.get('/register', function (req, res) {
+    res.render('register.ejs', { title: 'Register' });
+ 
+
+});
 
 
 
