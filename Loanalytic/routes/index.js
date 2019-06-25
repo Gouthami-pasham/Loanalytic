@@ -6,6 +6,9 @@ var router = express.Router();
 router.get('/', function (req, res) {
     res.render('index.ejs', { title: 'Login' });
 });
+router.get('/adminhome', function (req, res) {
+    res.render('adminhome.ejs', { title: 'Login' });
+});
 
 router.get('/', function (req, res) {
     res.render('forgotpassword.ejs', { title: 'Forgot Password'});
