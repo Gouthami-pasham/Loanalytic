@@ -3,6 +3,7 @@ var nodemailer = require('nodemailer');
 var emailTemplates = require('email-templates');
 var sendMailTransport = require('nodemailer-smtp-transport');
  
+
 module.exports = {
   _template: null, 
   _transport: null,
