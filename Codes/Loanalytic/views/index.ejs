@@ -1,0 +1,111 @@
+﻿<% include layout.ejs %>
+<div class="container login-container">
+      <div class="row">
+         <div class="col-md-12">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+               <li class="nav-item">
+                  <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">User</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Admin</a>
+               </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+               <div class="tab-pane fade show active text-align form-new" id="user" role="tabpanel" aria-labelledby="user-tab">
+                  <div class="row justify-content-center">
+                     <div class="col-md-6 login-form-1">
+                        <h3>User Login</h3>
+                        <form class="needs-validation"  novalidate action="/userhome">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Username *" pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required />
+                              <div class="valid-feedback">
+                                 Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                  Please provide username / valid username!
+                                </div>
+                           </div>
+                           <div class="form-group">
+                              <input type="password" class="form-control" placeholder="Password *"  required/>
+                              <div class="valid-feedback">
+                                 Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                  Please provide password / valid password!
+                                </div>
+                           </div>
+                           <div class="form-group">
+                              <input type="submit" class="btnSubmit" value="Login" />
+                           </div>
+                           <div class="form-group">
+                              <a href="forgotpassword" class="ForgetPwd">Forget Password?</a>
+                           </div>
+                        </form>
+                        <h6 class="account"> Dont you have an account? Please register for a new account! </h6>
+                        <div class="login_section">
+                           <div class="form-group login_btn" >
+                              <input type="button" class= "loginBtn" onclick="location.href='/register'" value="Register" />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="tab-pane fade show text-align form-new" id="admin" role="tabpanel" aria-labelledby="admin-tab">
+                  <div class="row justify-content-center" >
+                     <div class="col-md-6 login-form-2">
+                        <h3>Admin Login</h3>
+                        <form class="needs-validation form_section"  novalidate action="/adminhome">
+                           <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Username *" pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required value="" />
+                              <div class="valid-feedback">
+                                 Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                  Please provide username / valid username!
+                                </div>
+                           </div>
+                           <div class="form-group">
+                              <input type="password" class="form-control" placeholder="Password *" required value=""/>
+                              <div class="valid-feedback">
+                                 Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                  Please provide password / valid password!
+                                </div>
+                           </div>
+                           <div class="form-group">
+                              <input type="submit" class="btnSubmit" value="Login" />
+                           </div>
+                           <div class="form-group">
+                              <a href="forgotpassword" class="ForgetPwd" value="Login">Forget Password?</a>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <div id="myModal" class="modal fade">
+                  <div class="modal-dialog modal-confirm">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <div class="icon-box">
+                              <i class="material-icons">&#xE876;</i>
+                           </div>				
+                           <h4 class="modal-title">Success!</h4>	
+                        </div>
+                        <div class="modal-body">
+                           <p class="text-center">You have loggged in succesfully</p>
+                        </div>
+                        <div class="modal-footer">
+                           <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                        </div>
+                     </div>
+                  </div>
+               </div> 
+            </div>
+         </div>
+      </div>
+   </div>
+ <% include footer.ejs %>
+
+</body>
+</html>

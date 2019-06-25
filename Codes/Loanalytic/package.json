@@ -1,0 +1,34 @@
+{
+  "name": "loanalytic",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "description": "Loanalytic",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "ejs": "^2.6.2",
+    "consolidate": "^0.15.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.2",
+    "express-ejs-layouts": "^2.3.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.15.6",
+    "express-status-monitor": "^1.0.1",
+    "express-validator": "latest",
+    "morgan": "^1.7.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.1",
+    "pug": "^2.0.0-beta6",
+    "serve-favicon": "^2.3.0"
+  }
+}

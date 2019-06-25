@@ -1,0 +1,116 @@
+.login-container{
+    margin-top: 100px;
+    margin-bottom: 0%;
+}
+.login-form-1{
+    padding: 5%;
+    /* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); */
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #008f95;
+}
+.login-form-2{
+    padding: 5%;
+    background: #fff;
+    /* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); */
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #008f95;
+}
+.login-container form{
+    padding: 10%;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #008f95;
+}
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #008f95;
+}
+.login-form-2 .ForgetPwd{
+    color: #008f95;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #008f95;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.loginBtn{
+    width: 75%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    background-color: #F77200;
+}
+
+.login_section {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.form-group.login_btn {
+    text-align: center;
+}
+
+a#home-tab {
+    font-size: 20px;
+}
+
+a#profile-tab {
+    font-size: 20px;
+}
+
+ul#myTab {
+    width: 50%;
+    margin: auto;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    border-color: #008f95;
+    background: #008f95;
+    color: #fff !important;
+}
+
+.nav-link{
+    color: #008f95!important;
+}
+
+.nav-tabs .nav-link{
+    border: 2px solid #dfd5d930;
+    color: #008f95 !important;
+}
+
+.btnSubmit:focus,.loginBtn:focus{
+    outline: none;
+  }
+
+.btnSubmit:hover, .loginBtn:hover {
+    background: #008f95;
+    outline: none;
+}
+
+h6.account {
+    margin-left: 40px;
+    color: #008f95;
+}
