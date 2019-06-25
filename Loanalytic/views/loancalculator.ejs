@@ -1,0 +1,73 @@
+<% include layout.ejs %>
+
+<div class="container login-container">
+  <div class="row">
+     <div class="col-md-12"> 
+        <div class="tab-content" id="myTabContent">
+              <div class="row justify-content-center">
+                 <div class="col-md-6 login-form-1">
+                    <h3>Loan Calculator</h3>
+                    <form class="needs-validation"  novalidate action="/userhome">
+                       <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Enter Loan Amount *" pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required />
+                          <div class="valid-feedback">
+                             Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              Please provide a valid Loan amount
+                            </div>
+                       </div>
+
+                       <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Loan Term" pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required />
+                        <div class="valid-feedback">
+                           Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a valid Loan Term
+                          </div>
+                     </div>
+
+                     <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Enter Interest Rate" pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required />
+                      <div class="valid-feedback">
+                         Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Please provide a valid interest rate
+                        </div>
+                   </div>
+
+                   <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter Taxes" pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required />
+                    <div class="valid-feedback">
+                       Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        Please provide a valid tax rate
+                      </div>
+                 </div>
+
+
+                      
+                       <div class="form-group">
+                          <input type="submit" class="btnSubmit" value="Calculate" />
+                       </div>
+                      
+                    </form>
+                    
+                  </div>
+                 
+              </div>
+           </div>
+          
+         
+        </div>
+     </div>
+  </div>
+</div>
+
+      <% include footer.ejs %>
+     
+    </body>
+    </html>

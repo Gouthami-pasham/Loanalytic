@@ -11,6 +11,10 @@ router.get('/', function (req, res) {
     res.render('forgotpassword.ejs', { title: 'Forgot Password'});
 });
 
+router.get('/', function (req, res) {
+    res.render('loancalculator.ejs', { title: 'loan calculator'});
+});
+
 router.get('/register', function (req, res) {
     res.render('register.ejs', { title: 'Register' });
 
