@@ -1,0 +1,85 @@
+<% include layout.ejs %>
+
+<div class="container">
+  <div class="row">
+     <div class="col-md-12"> 
+        <div class="tab-content" id="myTabContent">
+                 <div class="col-md-6 login-form-1">
+                    <br><h3>Loan Calculator</h3><br>
+                    <form class="needs-validation" >
+                       <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Enter Loan Amount*" pattern="[0-9]" required />
+                          <div class="valid-feedback">
+                             Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                              Please provide a valid Loan amount
+                            </div>
+                       </div>
+
+                       <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Loan Term*" pattern="[0-9]" required />
+                        <div class="valid-feedback">
+                           Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please provide a valid Loan Term
+                          </div>
+                     </div>
+
+                     <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Enter Interest Rate*" pattern="[0-9]" required />
+                      <div class="valid-feedback">
+                         Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                          Please provide a valid interest rate
+                        </div>
+                   </div>
+
+                   <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter Taxes*" pattern="[0-9]" required />
+                    <div class="valid-feedback">
+                       Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                        Please provide a valid tax rate
+                      </div>
+                 </div> 
+                       <div class="form-group">
+                          <input type="submit" class="btnSubmit" value="Calculate" /><br><br>
+                       </div>
+                       
+                      </form>   
+                      
+                        <H5>Principal + Interest.....................$100000</H5>
+                        <H5>Estimated Monthly Payment....$750</H5>
+                          <div id="piechart"></div>
+                          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                          <script type="text/javascript">
+                          // Load google charts
+                          google.charts.load('current', {'packages':['corechart']});
+                          google.charts.setOnLoadCallback(drawChart);
+                          function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Description', 'Total'],
+                            ['Principal', 80],
+                            ['Interest', 20],
+                          ]);
+                            var options = {'title':'Principal and Interest', 'width':550, 'height':400};
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                            chart.draw(data, options);
+                          }
+                          </script>
+                  </div>              
+              
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+
+      <% include footer.ejs %>
+     
+    </body>
+    </html>

@@ -15,6 +15,7 @@ const expressStatusMonitor = require('express-status-monitor')
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var forgotpassword = require('./routes/forgotpassword');
+var loancalculator = require('./routes/loancalculator');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use(errorHandler())
 app.use('/', routes);
 app.use('/users', users);
 app.use('/forgotpassword',forgotpassword);
+app.use('/loancalculator',loancalculator);
 
 app.use('/userhome', function (req, res) {
     res.render('userhome.ejs', { title: 'Home' });
@@ -43,7 +45,9 @@ app.use('/userhome', function (req, res) {
 app.use('/forgotpassword', function (req, res) {
     res.render('forgotpassword.ejs', { title: 'Forgot Password' });
 });
-
+app.use('/loancalculator', function (req, res) {
+    res.render('loancalculator.ejs', { title: 'loancalculator' });
+});
 
 // catch 404 and forward to error handler
 
