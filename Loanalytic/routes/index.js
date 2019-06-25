@@ -11,4 +11,11 @@ router.get('/', function (req, res) {
     res.render('forgotpassword.ejs', { title: 'Forgot Password'});
 });
 
+router.get('/register', function (req, res) {
+    res.render('register.ejs', { title: 'Register' });
+
+
+});
+
+
 module.exports = router;
