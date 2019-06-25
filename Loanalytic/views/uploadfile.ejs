@@ -1,0 +1,45 @@
+
+<% include layout.ejs %> 
+<div class="container login-container">
+  
+<div class="col-auto"> 
+ 
+        <label>ApplicationID:
+        <input type="number" placeholder="ApplicationID"></label>
+        
+    </div>
+ 
+    <br>
+    <div class="col-auto">
+      
+        <label>DocumentID:
+        <input type="number" placeholder="DocumentID"></label>
+    </div>
+    <br>
+      <div class="col-auto">
+          <label >Document Name:</label>
+          <select class="form-control-lg">
+              <option>Select</option>
+            <option>Proof Of Income</option>
+            <option>Social Security Number(SSN)</option>
+            <option>Tax Documents</option>
+            <option>Proof of employment</option>
+            <option>Proof of residence</option>
+          </select>
+        </div>
+        <br>
+  <div class="col-auto">
+    <div class="btn btn-primary btn-xs float-left">
+      <!-- <span>Choose file</span> -->
+      <input type="file">
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text" placeholder="Upload your file" >
+    </div>
+  </div>
+
+</form>
+</div>
+<% include footer.ejs %>
+
+  
