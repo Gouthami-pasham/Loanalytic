@@ -14,6 +14,7 @@ const errorHandler = require('errorhandler')
 const expressStatusMonitor = require('express-status-monitor')
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var forgotpassword = require('./routes/forgotpassword');
 
 var app = express();
 
@@ -34,11 +35,14 @@ app.use(errorHandler())
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/forgotpassword',forgotpassword);
 
 app.use('/userhome', function (req, res) {
     res.render('userhome.ejs', { title: 'Home' });
 });
-
+app.use('/forgotpassword', function (req, res) {
+    res.render('forgotpassword.ejs', { title: 'Forgot Password' });
+});
 
 
 // catch 404 and forward to error handler

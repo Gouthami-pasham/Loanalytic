@@ -21,7 +21,9 @@ router.get('/register', function (req, res) {
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Document' });
 });
-
+router.get('/forgotpassword', function (req, res) {
+    res.render('forgotpassword.ejs', { title: 'forgotpassword' });
+});
 
 
 
