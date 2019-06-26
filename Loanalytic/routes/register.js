@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET registration page. */
-router.get('/', function (req, res) {
-    res.render('register.ejs', { title: 'Register' });
+router.get('/index', function (req, res) {
+    res.render('index.ejs', { title: 'Register' });
 });
 
 
