@@ -67,8 +67,8 @@ app.use(function (err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = http.createServer(function (req, res) {
-    debug('Express server listening on port ' + server.address().port);
-    console.log('Express server listening on port ' + server.address().port);
-  }).listen(app.get('port'),);
+var server = http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + server.address().address + app.get('port'));
+  });
+  
 
