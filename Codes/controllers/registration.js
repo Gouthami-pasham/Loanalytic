@@ -1,13 +1,31 @@
-var db = require('../db');
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+router.use(bodyParser.json());
+var registration = require('./models/registration');
 
-var regsitration = {
-    getUserdetails: function(callback)
-    {
-        return db.query('SELECT * from tb_user', callback);
-    },
-    createUser: function (Matiere, callback) {
-        return db.query('Insert into tb_user(User_id, FirstName,LastName,Mobile,Email,Age,DateOfBirth,SSN,Employee_id,Employeestatus) values(?,?,?,?,?,?,?,?)', callback);
-    }
-}
+router.get('/', function (req, res) {
+    registration.getUserdetails(function(err,rows){
+        if(err) {
+            res.status(400).json(err);
+        }
+        else
+        {
+            res.json(rows);
+        }
+    });
+});
 
-module.exports = regsitration;
+router.post('/', function (req, res) {
+    registration.createUser(req.body,function(err,count){
+        if(err)
+        {
+            res.status(400).json(err);
+        }
+        else{
+            res.json(req.body);
+        }
+    });
+});
+
+module.exports = router;

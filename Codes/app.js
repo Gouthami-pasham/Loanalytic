@@ -2,6 +2,7 @@
 var debug = require('debug');
 var express = require('express');
 var path = require('path');
+var http = require('http');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -16,6 +17,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var forgotpassword = require('./routes/forgotpassword');
 var loancalculator = require('./routes/loancalculator');
+var registrationController = require('./controllers/registration');
+
 
 var app = express();
 
@@ -38,16 +41,8 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/forgotpassword',forgotpassword);
 app.use('/loancalculator',loancalculator);
+app.use('/registration', registrationController);
 
-app.use('/userhome', function (req, res) {
-    res.render('userhome.ejs', { title: 'Home' });
-});
-app.use('/forgotpassword', function (req, res) {
-    res.render('forgotpassword.ejs', { title: 'Forgot Password' });
-});
-app.use('/loancalculator', function (req, res) {
-    res.render('loancalculator.ejs', { title: 'loancalculator' });
-});
 
 // catch 404 and forward to error handler
 
@@ -72,7 +67,8 @@ app.use(function (err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = app.listen(app.get('port'), function () {
+var server = http.createServer(function (req, res) {
     debug('Express server listening on port ' + server.address().port);
     console.log('Express server listening on port ' + server.address().port);
-});
+  }).listen(app.get('port'),);
+
