@@ -15,6 +15,11 @@ router.get('/adminhome', function (req, res) {
 });
 
 
+router.get('/loancalculator', function (req, res) {
+    res.render('loancalculator.ejs', { title: 'Login' });
+});
+
+
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
 
