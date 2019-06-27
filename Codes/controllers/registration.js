@@ -5,6 +5,10 @@ router.use(bodyParser.json());
 var registration = require('../models/registration');
 
 router.get('/', function (req, res) {
+    res.render('register.ejs', { title: 'Register' });
+});
+
+router.get('/getuser', function (req, res) {
     registration.getUserdetails(function(err,rows){
         if(err) {
             res.status(400).json(err);
@@ -16,7 +20,7 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post('/', function (req, res) {
+router.post('/createuser', function (req, res) {
     registration.createUser(req.body,function(err,count){
         if(err)
         {

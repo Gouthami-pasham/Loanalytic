@@ -1,6 +1,10 @@
 ﻿'use strict';
 var express = require('express');
 var router = express.Router();
+var registration = require('../models/registration');
+var registrationController = require('../controllers/registration');
+
+router.use('/register', registrationController);
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -10,23 +14,14 @@ router.get('/adminhome', function (req, res) {
     res.render('adminhome.ejs', { title: 'Login' });
 });
 
-router.get('/', function (req, res) {
-    res.render('forgotpassword.ejs', { title: 'Forgot Password'});
-});
 
-router.get('/', function (req, res) {
-    res.render('loancalculator.ejs', { title: 'loan calculator'});
-});
-router.get('/register', function (req, res) {
-    res.render('register.ejs', { title: 'Register' });
-
-
-});
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
 
 
 });
+
+
 
 
 module.exports = router;

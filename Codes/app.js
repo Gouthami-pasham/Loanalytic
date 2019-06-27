@@ -41,7 +41,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/forgotpassword',forgotpassword);
 app.use('/loancalculator',loancalculator);
-app.use('/registration', registrationController);
+
 
 
 // catch 404 and forward to error handler
