@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: loanalytic
+-- Host: localhost    Database: loananalytic
 -- ------------------------------------------------------
--- Server version	8.0.15
+-- Server version	8.0.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -133,20 +133,16 @@ CREATE TABLE `tb_user` (
   `User_id` int(11) NOT NULL,
   `FirstName` varchar(45) DEFAULT NULL,
   `LastName` varchar(45) DEFAULT NULL,
-  `Mobile` varchar(45) DEFAULT NULL,
+  `Mobile` int(11) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
-  `Age` varchar(45) DEFAULT NULL,
-  `DateOfBirth` varchar(45) DEFAULT NULL,
-  `SSN` varchar(45) DEFAULT NULL,
-  `Employee_id` varchar(45) DEFAULT NULL,
+  `Age` int(3) DEFAULT NULL,
+  `DateOfBirth` date DEFAULT NULL,
+  `SSN` int(9) DEFAULT NULL,
+  `Employee_id` varchar(45) NOT NULL,
   `Employeestatus` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`User_id`)
+  PRIMARY KEY (`User_id`,`Employee_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping events for database 'loanalytic'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -157,4 +153,4 @@ CREATE TABLE `tb_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-18 12:15:06
+-- Dump completed on 2019-06-26 17:08:16
