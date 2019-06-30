@@ -8,15 +8,16 @@ router.use('/register', registrationController);
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    res.render('index.ejs', { title: 'Login_user_admin' });
+    res.render('index.ejs', { title: 'Login' });
 });
+
 router.get('/adminhome', function (req, res) {
-    res.render('adminhome.ejs', { title: 'Login_admin' });
+    res.render('adminhome.ejs', { title: 'Login' });
 });
 
 
 router.get('/loancalculator', function (req, res) {
-    res.render('loancalculator.ejs', { title: 'Loancalculator' });
+    res.render('loancalculator.ejs', { title: 'LoanCalculator' });
 });
 
 
