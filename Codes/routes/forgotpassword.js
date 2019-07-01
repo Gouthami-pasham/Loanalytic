@@ -17,7 +17,6 @@ router.post('/forgotpassword', function (req, res) {
     }
     })
 
-    
 });
 // router.get('/mailconfirmation', auth.isAuthenticated(), controller.sendMailAdressConfirmationMail);
 // router.post('/mailconfirmation', controller.confirmMailAddress);
