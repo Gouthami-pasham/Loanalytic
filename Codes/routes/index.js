@@ -10,13 +10,14 @@ router.use('/register', registrationController);
 router.get('/', function (req, res) {
     res.render('index.ejs', { title: 'Login' });
 });
+
 router.get('/adminhome', function (req, res) {
     res.render('adminhome.ejs', { title: 'Login' });
 });
 
 
 router.get('/loancalculator', function (req, res) {
-    res.render('loancalculator.ejs', { title: 'Login' });
+    res.render('loancalculator.ejs', { title: 'LoanCalculator' });
 });
 
 
