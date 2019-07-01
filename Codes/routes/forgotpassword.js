@@ -7,17 +7,7 @@ router.get('/forgotpassword', function (req, res) {
     res.render('forgotpassword.ejs');
 });
 
-router.post('/forgotpassword', function (req, res) {
-    const email = req.body.email
-    User.findOne({ email: email })
-    .exec()
-    .then(function (user) {
-    if (!user) {
-    return throwFailed(res, 'No user found with that email address.')
-    }
-    })
 
-});
 // router.get('/mailconfirmation', auth.isAuthenticated(), controller.sendMailAdressConfirmationMail);
 // router.post('/mailconfirmation', controller.confirmMailAddress);
 // router.get('/passwordreset', controller.sendPwdResetMail);
