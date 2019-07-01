@@ -20,11 +20,12 @@ router.get('/loancalculator', function (req, res) {
     res.render('loancalculator.ejs', { title: 'LoanCalculator' });
 });
 
+router.get('/forgotpassword', function (req, res) {
+    res.render('forgotpassword.ejs');
+});
 
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
-
-
 });
 
 
