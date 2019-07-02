@@ -36,14 +36,6 @@ function validate(){
             $http.post('http://localhost:3000/forgotpassword/getUserById', data, config).then(function (response) {
               // This function handles succes
               console.log(response); 
-              if(!response.data.length){
-                alert("Invalid email id");
-              }
-              else{
-                alert("sucess");
-                $('#sendEmail').hide();
-                $('#changePassword').show();
-              }
               }, function (response) {
               
               // this function handles error

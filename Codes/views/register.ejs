@@ -1,4 +1,5 @@
 <% include layout.ejs %>
+<script src="../../js/register.js"></script>
 <body>
 
     <div class="container" ng-app="myApp">
@@ -13,6 +14,7 @@
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
             <input name="" class="form-control" placeholder="First Name *" type="text"  ng-model="user.firstName" pattern="[A-Za-z]*" required >
+            <input name="" class="form-control" placeholder="First Name " type="text"  pattern="[A-Za-z]*" required >
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -63,7 +65,7 @@
         
                <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-birthday-cake"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
                  </div>
                 <input name="" class="form-control" placeholder="Date Of Birth" type="date" ng-model="user.dateofbirth" required>
                 <div class="valid-feedback">
