@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/forgotpassword', function (req, res) {
-    res.render('forgotpassword.ejs');
+    res.render('forgotpassword.ejs', { title: 'Forgot Password' });
 });
 
 

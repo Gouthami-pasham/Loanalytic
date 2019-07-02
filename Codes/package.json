@@ -24,12 +24,13 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.15.6",
     "express-status-monitor": "^1.0.1",
-    "express-validator": "latest",
+    "express-validator": "^6.1.0",
     "http-server": "^0.11.1",
     "morgan": "^1.7.0",
     "mysql": "^2.17.1",
     "nodemailer": "^6.2.1",
     "nodemon": "^1.19.1",
+    "request": "^2.88.0",
     "serve-favicon": "^2.3.0"
   }
 }

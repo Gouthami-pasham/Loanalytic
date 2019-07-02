@@ -19,7 +19,6 @@ var forgotpassword = require('./routes/forgotpassword');
 var loancalculator = require('./routes/loancalculator');
 var registrationController = require('./controllers/registration');
 
-
 var app = express();
 
 // view engine setup
@@ -36,7 +35,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(expressLayouts)
 app.use(errorHandler()) 
-
 app.use('/', routes);
 app.use('/users', users);
 app.use('/forgotpassword',forgotpassword);
