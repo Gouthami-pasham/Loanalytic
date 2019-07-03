@@ -14,7 +14,12 @@ var sendMail = {
       from: 'supp.loanalytic2019@gmail.com',
       to: data.email,
       subject: data.subject,
-      text: data.text
+      html: data.text,
+      attachments: [{
+        filename: 'image.png',
+        path: __dirname+'/public/images/'+data.src,
+        cid: 'unique@kreata.ee' //same cid value as in the html img src
+    }]
     };
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {

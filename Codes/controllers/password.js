@@ -31,5 +31,19 @@ router.post('/sendEmail', function (req, res) {
     //res.json(req.body);
   });
 
+  router.post('/updateUserById', function (req, res) {
+    console.log(JSON.stringify(req.body));
+    registration.updateUserById(req.body,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(count);
+        }
+    });
+   // res.json(req.body);
+  });
+
 
 module.exports = router;

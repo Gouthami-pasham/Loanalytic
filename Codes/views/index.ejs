@@ -17,18 +17,21 @@
                   <div class="row justify-content-center">
                      <div class="col-md-6 login-form-1">
                         <h3>User Login</h3>
-                        <form class="needs-validation"  action="/userhome">
+                        <form class="needs-validation"   novalidate ng-controller="loginFormController" id="userLoginForm">
                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Username *" pattern="[A-Za-z]*" required />
+                              <input type="text" class="form-control" placeholder="Email *" ng-model="user.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                               <div class="valid-feedback">
                                  Looks good!
                                 </div>
                                 <div class="invalid-feedback">
-                                  Please provide username / valid username!
+                                  Please provide email / valid email!
                                 </div>
                            </div>
+                           <div class="alert alert-danger" role="alert" id="email-failed">
+                              Please provide valid Email!
+                            </div>
                            <div class="form-group">
-                              <input type="password" class="form-control" placeholder="Password *" pattern="[A-Za-z]*[0-9]*" required />
+                              <input type="password" class="form-control" placeholder="Password *" ng-model="user.password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{5,20})"  required />
                               <div class="valid-feedback">
                                  Looks good!
                                 </div>
@@ -36,6 +39,10 @@
                                   Please provide password / valid password!
                                 </div>
                            </div>
+                           
+                            <div class="alert alert-danger" role="alert" id="password-failed">
+                              Please provide valid password!
+                            </div>
                            <div class="form-group">
                               <input type="submit" class="btnSubmit" value="Login" />
                            </div>
@@ -117,66 +124,7 @@
       </div>
    </div>
 
-
- <script>
-   var myInput = document.getElementById("psw");
-   var letter = document.getElementById("letter");
-   var capital = document.getElementById("capital");
-   var number = document.getElementById("number");
-   var length = document.getElementById("length");
-   
-   // When the user clicks on the password field, show the message box
-   myInput.onfocus = function() {
-     document.getElementById("message").style.display = "block";
-   }
-   
-   // When the user clicks outside of the password field, hide the message box
-   myInput.onblur = function() {
-     document.getElementById("message").style.display = "none";
-   }
-   
-   // When the user starts to type something inside the password field
-   myInput.onkeyup = function() {
-     // Validate lowercase letters
-     var lowerCaseLetters = /[a-z]/g;
-     if(myInput.value.match(lowerCaseLetters)) {  
-       letter.classList.remove("invalid");
-       letter.classList.add("valid");
-     } else {
-       letter.classList.remove("valid");
-       letter.classList.add("invalid");
-     }
-     
-     // Validate capital letters
-     var upperCaseLetters = /[A-Z]/g;
-     if(myInput.value.match(upperCaseLetters)) {  
-       capital.classList.remove("invalid");
-       capital.classList.add("valid");
-     } else {
-       capital.classList.remove("valid");
-       capital.classList.add("invalid");
-     }
-   
-     // Validate numbers
-     var numbers = /[0-9]/g;
-     if(myInput.value.match(numbers)) {  
-       number.classList.remove("invalid");
-       number.classList.add("valid");
-     } else {
-       number.classList.remove("valid");
-       number.classList.add("invalid");
-     }
-     
-     // Validate length
-     if(myInput.value.length >= 8) {
-       length.classList.remove("invalid");
-       length.classList.add("valid");
-     } else {
-       length.classList.remove("valid");
-       length.classList.add("invalid");
-     }
-   }
-   </script>
     <% include footer.ejs %>
+    <script src="../../js/login.js"></script>
 </body>
 </html>

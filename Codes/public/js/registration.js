@@ -4,6 +4,7 @@
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       $('#password-failed').hide();
       $('#password-success').hide();
+      $('#date-failed').hide();
       validate();
     }, false);
    
@@ -45,6 +46,21 @@
     $scope.reset = function() {
      
     };
+
+    $scope.validateDate = function($event){
+      var birthday = event.currentTarget.valueAsDate;
+        var ageDifMs = Date.now() - birthday.getTime();
+        var ageDate = new Date(ageDifMs); // miliseconds from epoch
+        var age =  Math.abs(ageDate.getUTCFullYear() - 1970);
+       if(age < 21){
+          $('#date-failed').show();
+       }
+       else{
+        $('#date-failed').hide();
+       }
+       
+    }
+    
     $scope.matchPassword = function($event){
       if($event.key == "CapsLock"){
         return; 
@@ -91,11 +107,13 @@
         }
       }
       if (form.checkValidity()) {
+        $('#date-failed').hide();
         var config = {
           headers : {
               'Content-Type': 'application/json'
           }
       }
+      
       $scope.user.dateofbirth = new Date($scope.user.dateofbirth); 
       var data = $scope.user;
       data.dateofbirth = formatDate($scope.user.dateofbirth);
@@ -103,6 +121,25 @@
         $http.post('http://localhost:3000/register/createuser', data, config).then(function (response) {
           // This function handles succes
           console.log(response); 
+          var data = {
+            "subject": "User Registration",
+            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Welcome to Loanalytic</h1>',
+            "email": $scope.user.email,
+            "src":"register.png"
+        }
+        $http.post('http://localhost:3000/register/sendEmail', data, config).then(function(response) {
+            // This function handles succes
+            console.log(response);
+            if(response.status == 200 && response.statusText == "OK"){
+              $('#registerModal').modal('show');
+            }
+            
+        }, function(response) {
+
+            // this function handles error
+            console.log(response);
+        });
+          
           }, function (response) {
           
           // this function handles error
@@ -111,6 +148,10 @@
       }  
     }
   });
+
+  $('#registerModal').on('hidden.bs.modal', function (e) {
+    location.href = '/';
+});
 
 
   

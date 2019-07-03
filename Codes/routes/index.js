@@ -31,6 +31,20 @@ router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
 });
 
+router.post('/getUserById', function (req, res) {
+    console.log(JSON.stringify(req.body));
+    registration.getUserById(req.body,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(count);
+        }
+    });
+   // res.json(req.body);
+  });
+
 
 
 

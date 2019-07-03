@@ -114,3 +114,9 @@ h6.account {
     margin-left: 40px;
     color: #008f95;
 }
+
+button.btn.btn-primary.btn-block {
+    background: #008f95 !important;
+    border: 1px solid #008f95 !important;
+    text-transform: none;
+}
