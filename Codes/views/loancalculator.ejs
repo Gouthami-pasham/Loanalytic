@@ -1,11 +1,11 @@
 <% include layout.ejs %>
-
 <div class="container">
-  <div class="row">
-     <div class="col-md-12">
+    <div class="row">
+     <div class="col-6">
         <div class="tab-content" id="myTabContent">
-                 <div class="col-md-6 login-form-1">
-                    <br><h3>Mortgage Calculator</h3><br>
+                 <div class="col-md-12 login-form-1">
+                  <br> <br><h3 class="text-info">Mortgage Calculator</h3><br>
+                  <h6 class="text-danger">Calculate estimated payments, then check with lenders for accurate rates.</h6>
                     <form class="needs-validation" >
                        <div class="form-group">
                         <B><label for="LoanAmt" class="text-info">Home price</label></B>
@@ -83,7 +83,7 @@
 
 
 
-
+<br>
                        <div class="form-group">
                           <input type="submit" class="btnSubmit" value="Calculate" /><br><br>
                        </div>
@@ -94,13 +94,12 @@
 
            </div>
         </div>
-     </div>
 
+    <div class="col-6">
+      <div class="tab-content" id="myTabContent">
+               <div class="col-md-12 login-form-1">
+<br><br>
 
-  <div class="row">
-    <div class="col-md-12">
-                          <H5>Principal + Interest.....................$100000</H5>
-                          <H5>Estimated Monthly Payment....$750</H5>
                             <div id="piechart"></div>
                             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                             <script type="text/javascript">
@@ -118,9 +117,15 @@
                               chart.draw(data, options);
                             }
                             </script>
+                            <H5>Principal + Interest.....................$100000</H5>
+                            <H5>Estimated Monthly Payment....$750</H5>
+                          </div>
+                          </div>
+
 </div>
 </div>
 </div>
+
 
       <% include footer.ejs %>
 
