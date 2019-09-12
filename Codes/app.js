@@ -17,6 +17,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var forgotpassword = require('./routes/forgotpassword');
 var loancalculator = require('./routes/loancalculator');
+var loancalculator_education = require('./routes/loancalculator_education');
+
 var registrationController = require('./controllers/registration');
 
 var app = express();
@@ -34,11 +36,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(expressLayouts)
-app.use(errorHandler()) 
+app.use(errorHandler())
 app.use('/', routes);
 app.use('/users', users);
 app.use('/forgotpassword',forgotpassword);
 app.use('/loancalculator',loancalculator);
+app.use('/loancalculator_education',loancalculator_education);
+
 app.use('/userhome',function (req, res) {
     res.render('userhome.ejs', { title: 'Home' });
 });
@@ -70,5 +74,3 @@ app.set('port', process.env.PORT || 3000);
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + server.address().address + app.get('port'));
   });
-  
-
