@@ -30,6 +30,10 @@ router.get('/loancalculator_education', function (req, res) {
     res.render('loancalculator_education.ejs', { title: 'LoanCalculator_education' });
 });
 
+router.get('/contact_us', function (req, res) {
+    res.render('contact_us.ejs', { title: 'contact_us' });
+});
+
 
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
