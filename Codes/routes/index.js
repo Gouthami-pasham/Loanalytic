@@ -21,6 +21,10 @@ router.get('/userhome', function (req, res) {
     res.render('userhome.ejs', { title: 'Login' });
 });
 
+router.get('/loanapplication', function (req, res) {
+    res.render('loanapplication.ejs', { title: 'Apply Loan' });
+});
+
 
 router.get('/loancalculator', function (req, res) {
     res.render('loancalculator.ejs', { title: 'LoanCalculator' });

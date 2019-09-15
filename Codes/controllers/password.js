@@ -6,7 +6,7 @@ var registration = require('../models/registration');
 var mailer = require('../nodemailer');
 
 router.get('/', function (req, res) {
-    res.render('forgotpassword.ejs', { title: 'Register' });
+    res.render('forgotpassword.ejs', { title: 'Forgpt Password' });
 });
 
 router.post('/getUserById', function (req, res) {
