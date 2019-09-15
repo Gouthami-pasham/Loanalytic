@@ -3,10 +3,12 @@ var express = require('express');
 var router = express.Router();
 var registration = require('../models/registration');
 var registrationController = require('../controllers/registration');
+var loanapplicationController = require('../controllers/loanapplication');
 var passwordController = require('../controllers/password');
 
 router.use('/register', registrationController);
 router.use('/forgotpassword', passwordController);
+router.use('/loanapplication', loanapplicationController);
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -21,9 +23,9 @@ router.get('/userhome', function (req, res) {
     res.render('userhome.ejs', { title: 'Login' });
 });
 
-router.get('/loanapplication', function (req, res) {
-    res.render('loanapplication.ejs', { title: 'Apply Loan' });
-});
+// router.get('/loanapplication', function (req, res) {
+//     res.render('loanapplication.ejs', { title: 'Apply Loan' });
+// });
 
 
 router.get('/loancalculator', function (req, res) {
