@@ -1,7 +1,11 @@
-<<<<<<< HEAD
+
+
 Testing the git branch
 
 testing one more time
-=======
-Testing the git branch
->>>>>>> 0adf8c430ce57a23df412333fc574870c37ea190
+
+testing merging functionality
+
+
+hello world
+
