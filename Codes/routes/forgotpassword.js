@@ -3,9 +3,9 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-// router.get('/forgotpassword', function (req, res) {
-//     res.render('forgotpassword.ejs', { title: 'Forgot Password' });
-// });
+ router.get('/forgotpassword', function (req, res) {
+     res.render('forgotpassword.ejs', { title: 'Forgot Password' });
+});
 
 
 // router.get('/mailconfirmation', auth.isAuthenticated(), controller.sendMailAdressConfirmationMail);
