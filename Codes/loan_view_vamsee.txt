@@ -1,4 +1,5 @@
-<h2>Sample Loan Application View</h2>
+<h1>Laon Application</h1>
+<h2>Loanalytic Loan Application View</h2>
 <script type="text/javascript">
 function ValidateForm(frm) {
 if (frm.First_Name.value == "") {alert('First name is required.');frm.First_Name.focus();return false;}
