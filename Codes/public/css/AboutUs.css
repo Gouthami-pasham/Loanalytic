@@ -1,0 +1,13 @@
+.abc {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+
+
+.align_text {
+   text-align: right;
+}
