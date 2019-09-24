@@ -17,3 +17,18 @@
    text-align: center;
    color: #191970;
 }
+
+.ex1 {
+  padding-left: 10%;
+  text-align: justify;
+}
+
+.ex {
+  text-align: justify;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.ex2 {
+  padding-right: 10%;
+  text-align: justify;
+}
