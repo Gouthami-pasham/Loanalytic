@@ -11,3 +11,9 @@
 .align_text {
    text-align: right;
 }
+
+
+.align_head {
+   text-align: center;
+   color: #191970;
+}
