@@ -32,3 +32,10 @@
   padding-right: 10%;
   text-align: justify;
 }
+
+.pos {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}

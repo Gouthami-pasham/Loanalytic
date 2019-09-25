@@ -48,6 +48,9 @@ router.get('/AboutUs', function (req, res) {
     res.render('AboutUs.ejs', { title: 'AboutUs' });
 });
 
+router.get('/Myprofile', function (req, res) {
+    res.render('Myprofile.ejs', { title: 'Myprofile' });
+});
 
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
