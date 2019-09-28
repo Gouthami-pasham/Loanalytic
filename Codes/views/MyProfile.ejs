@@ -3,19 +3,21 @@
   <br><br>
     <div class="row">
     <div class="col-3">
-      <br><br>
+      <br><br><br>
       <div class="jumbotron w-100 p-3">
 <br>
       <form class="form-group" action="" method="get">
-        <h2 class="header_color align-items-center">My Profile</h2>
-    <img class="" src="../images/chat.jpg" alt="">
+    <img class="" src="../images/logo.png" alt="">
       <b> <label class="header_color" id="pas" for="Name">Gouthami Pasham</label></b>
       <input class="form-control" type="text" id="Name" value=""><br>
       <hr class="my-4">
       </form>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-1">
+
+    </div>
+    <div class="col-6">
       <form class="form-group" action="" method="get"><br><br><br>
       <h2 class="header_color align-items-center">My Profile</h2>
       <b> <label class="header_color" id="pas" for="Name">Name</label></b>
@@ -23,64 +25,41 @@
       <b> <label class="header_color"  for="email">Email</label></b>
       <input class="form-control" type="text" id="email" value=""><br>
       <b> <label class="header_color"  for="phno">Phone Number</label></b>
-      <input class="form-control" type="text" id="phno" value=""><br>
-      <b> <label class="header_color" id="pas" for="country">Country</label></b>
-      <input class="form-control" type="text" id="country" value=""><br>
-      <b> <label class="header_color" id="pas" for="password">Change Password</label></b>
-      <input class="form-control" type="text" id="password" value=""><br>
-
       <div class="input-group mb-2">
+        <input class="form-control" type="text" id="phno" value="">
         <div class="input-group-prepend">
           <div class="input-group-text">@</div>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-      </div>
+      </div><br>
 
-
-
-      <form>
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Name</label>
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
-          </div>
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="form-check mb-2">
-              <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-              <label class="form-check-label" for="autoSizingCheck">
-                Remember me
-              </label>
-            </div>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
-          </div>
+      <b> <label class="header_color" id="pas" for="country">Country</label></b>
+      <div class="input-group mb-2">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
         </div>
-      </form>
-
-
-
-
+      </div><br>
+      <b> <label class="header_color" id="pas" for="password">Change Password</label></b>
+      <div class="input-group mb-2">
+        <input type="password" class="form-control" id="password" placeholder="">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+      </div><br>
+      <b> <label class="header_color" id="pas" for="password">Confirm Password</label></b>
+      <div class="input-group mb-2">
+        <input type="password" class="form-control" id="password" placeholder="">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+      </div><br>
       <hr class="my-4">
       <a class="btn-info btn-lg" href="/" role="button">cancel</a>
       <a class="btn-danger btn-lg" href="/" role="button">Save</a>
-
       </form>
     </div>
 </div>
 </div>
-
-
       <% include footer.ejs %>
-
     </body>
     </html>
