@@ -7,5 +7,56 @@ router.get('/', function (req, res) {
     res.render('loanapplication.ejs', { title: 'Apply Loan' });
 });
 
+router.get('/getuser', function (req, res) {
+    registration.getUserdetails(function(err,rows){
+        if(err) {
+            res.status(400).json(err);
+        }
+        else
+        {
+            res.json(rows);
+        }
+    });
+});
+
+router.post('/createuser', function (req, res) {
+    console.log(JSON.stringify(req.body));
+    registration.createUser(req.body,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(count);
+        }
+    });
+   // res.json(req.body);
+});
+
+router.post('/getUserById', function (req, res) {
+    console.log(JSON.stringify(req.body));
+    /*registration.getUserById(req.body,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(count);
+        }
+    });*/
+    res.json(req.body);
+});
+
+
+router.post('/sendEmail', function (req, res) {
+    console.log(JSON.stringify(req.body));
+   mailer.sendEmail(req.body,function(response){
+       res.json(response);
+    });
+    //res.json(req.body);
+  });
+
+
 
 module.exports = router;
+
