@@ -1,6 +1,6 @@
 var db = require('../db');
 
-var regsitration = {
+var registration = {
     getUserdetails: function(callback)
     {
         return db.query('SELECT * from tb_user', callback);
@@ -20,4 +20,4 @@ var regsitration = {
     }
 }
 
-module.exports = regsitration;
+module.exports = registration;
