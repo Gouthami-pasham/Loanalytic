@@ -47,33 +47,6 @@ function validate(){
        
     }
     
-    $scope.matchPassword = function($event){
-      if($event.key == "CapsLock"){
-        return; 
-      }
-      if(($scope.user.password != "") && ($event.target.value != "")){
-          if($scope.user.password == $event.target.value + $event.key){
-            $('#password-failed').hide();
-            $('#password-success').show();
-            
-          }
-          else{
-            $('#password-success').hide();
-            $('#password-failed').show();
-          }
-      }
-      else{
-        $('#password-success').hide();
-        $('#password-failed').show();
-      }
-
-      if($event.key == "Backspace"){
-        var valueLength = $event.target.value.length - 1;
-        if($event.target.value == "" || !valueLength){
-          $('#password-failed').hide();
-        }   
-      }
-    }
     $scope.submitForm = function(event){
       var form = $('#userRegsitration')[0];
       if (form.checkValidity() === false) {
