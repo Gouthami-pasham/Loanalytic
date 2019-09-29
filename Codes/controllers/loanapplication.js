@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.json());
-
+var loanApplication = require('../models/registration');
+var mailer = require('../nodemailer');
 router.get('/', function (req, res) {
     res.render('loanapplication.ejs', { title: 'Apply Loan' });
 });
 
 router.get('/getuser', function (req, res) {
-    registration.getUserdetails(function(err,rows){
+    loanApplication.getUserdetails(function(err,rows){
         if(err) {
             res.status(400).json(err);
         }
@@ -21,7 +22,7 @@ router.get('/getuser', function (req, res) {
 
 router.post('/createuser', function (req, res) {
     console.log(JSON.stringify(req.body));
-    registration.createUser(req.body,function(err,count){
+    loanApplication.saveApplication(req.body,function(err,count){
         if(err)
         {
             res.json(err);
