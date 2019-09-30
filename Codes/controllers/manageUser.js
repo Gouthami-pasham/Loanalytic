@@ -14,6 +14,7 @@ router.get('/getadmin', function (req, res) {
             res.status(400).json(err);
         }
         else
+        
         {
             res.json(rows);
         }
