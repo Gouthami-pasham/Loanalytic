@@ -19,3 +19,12 @@ transporter.sendMail(mailOptions, function(error, info){
     }
     console.log('Message sent: ' + info.response);
 });
+
+
+// curl -s --user 'api:YOUR_API_KEY' \
+//     https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages \
+//     -F from='Excited User <mailgun@test.com>' \
+//     -F to=s533908@nwmissouri.edu \
+//     -F to=crvamsee@gmail.com \
+//     -F subject='Hello Welcome to loanalytic' \
+//     -F text='Testing some Loanalytic mail!'

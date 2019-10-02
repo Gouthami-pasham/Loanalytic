@@ -1,0 +1,41 @@
+.abc {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
+
+
+.align_text {
+   text-align: right;
+}
+
+
+.align_head {
+   text-align: center;
+   color: #191970;
+}
+
+.ex1 {
+  padding-left: 10%;
+  text-align: justify;
+}
+
+.ex {
+  text-align: justify;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.ex2 {
+  padding-right: 10%;
+  text-align: justify;
+}
+
+.pos {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}

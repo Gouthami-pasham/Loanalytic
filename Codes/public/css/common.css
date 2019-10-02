@@ -61,3 +61,11 @@ button.submit-btn:focus, button.submit-btn:hover{
 a.navbar-brand {
     font-weight: normal;
 }
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #008f95;
+    border-color: #008f95;
+    color: #fff !important;
+}
