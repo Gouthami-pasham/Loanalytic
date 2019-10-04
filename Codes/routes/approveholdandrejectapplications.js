@@ -4,7 +4,7 @@ var router = express.Router();
 
 
 router.get('/approveholdandrejectapplications', function (req, res) {
-    res.render('approveholdandrejectapplications.ejs');
+    res.render('aapproveholdandrejectapplications.ejs');
 });
 
 module.exports = router;

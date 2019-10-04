@@ -56,6 +56,20 @@ router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
 });
 
+router.get('/viewapplicationhistory', function (req, res) {
+    res.render('viewapplicationhistory.ejs', { title: 'View Application History' });
+});
+router.get('/approvedapplications', function (req, res) {
+    res.render('approvedapplications.ejs', { title: 'Approved Applications' });
+});
+
+router.get('/rejectedapplications', function (req, res) {
+    res.render('rejectedapplications.ejs', { title: 'Rejected Applications' });
+});
+
+router.get('/approveholdandrejectapplications', function (req, res) {
+    res.render('approveholdandrejectapplications.ejs', { title: 'Approve Hold and Reject Applications' });
+});
 router.post('/getUserById', function (req, res) {
     console.log(JSON.stringify(req.body));
     registration.getUserById(req.body,function(err,count){
