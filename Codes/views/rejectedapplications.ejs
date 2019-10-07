@@ -2,12 +2,21 @@
 <div class="container login-container">
                 <div class="row">
                    <div class="col-md-12">
-
+                        <div class="form-group">
+                     <B><label for="ID" class="header_color">Application ID</label></B>
+                     <input type="text" id="ID" class="form-control" placeholder="Enter valid Application ID" pattern="[0-9]" required />
+                     <div class="valid-feedback">
+                        Looks good!
+                       </div>
+                       <div class="invalid-feedback">
+                         Please provide a valid application ID
+                       </div>
+                   </div>
                         <div class="form-group">
                                 <input type="submit" class="btnSubmit" value="submit" />
                              </div>
                    </div>
                 </div>
            </div>
-<h6 class="details"> DETAILS OF REJECTED APPLICATIONS.</h6>
+<h6 class="details"> DETAILS OF REJECTED APPLICATIONS:</h6>
 <% include footer.ejs %>
