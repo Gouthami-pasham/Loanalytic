@@ -44,6 +44,13 @@ router.get('/contact_us', function (req, res) {
     res.render('contact_us.ejs', { title: 'contact_us' });
 });
 
+router.get('/AboutUs', function (req, res) {
+    res.render('AboutUs.ejs', { title: 'AboutUs' });
+});
+
+router.get('/Myprofile', function (req, res) {
+    res.render('Myprofile.ejs', { title: 'Myprofile' });
+});
 
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
