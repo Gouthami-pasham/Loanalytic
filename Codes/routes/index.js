@@ -7,6 +7,7 @@ var loanapplicationController = require('../controllers/loanapplication');
 var adminviewapplicationController = require('../controllers/adminviewapplication');
 var approvedpplicationController = require('../controllers/approvedapplication');
 var rejectedapplicationController = require('../controllers/rejectedapplication');
+var viewapplicationController = require('../controllers/viewapplication');
 var passwordController = require('../controllers/password');
 
 router.use('/register', registrationController);
@@ -15,6 +16,7 @@ router.use('/loanapplication', loanapplicationController);
 router.use('/adminviewapplication', adminviewapplicationController);
 router.use('/approvedapplication', approvedpplicationController);
 router.use('/rejectedapplication', rejectedapplicationController);
+router.use('/viewapplication', viewapplicationController);
 
 
 /* GET home page. */
