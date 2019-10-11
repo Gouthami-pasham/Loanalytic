@@ -14,14 +14,14 @@ app.controller('userViewApplications', function($scope, $http) {
 
     $scope.getApplication = function(){
         var data = {
-            test: "test"
+            email: sessionStorage.getItem("userEmail")
         };
         var config = {
             headers : {
                 'Content-Type': 'application/json'
             }
         }
-        $http.get('http://localhost:3000/viewapplication/getApplication').then(function(response) {
+        $http.post('http://localhost:3000/viewapplication/getApplication',data,config).then(function(response) {
               // This function handles succes
               console.log(response);
               $scope.totalApplication = response.data;
