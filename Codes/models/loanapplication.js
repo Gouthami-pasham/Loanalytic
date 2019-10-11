@@ -16,9 +16,9 @@ var loanApplication = {
         return db.query("SELECT * from tb_applications where Status='In Progress'", callback);
     },
     
-    getApplicationRecords: function(callback)
+    getApplicationRecords: function(req,callback)
     {
-        return db.query("SELECT * from tb_applications", callback);
+        return db.query('SELECT * from tb_applications where User_id ='+"'"+req.email+"'", callback);
     },
     getApprovedRecords: function(callback)
     {
