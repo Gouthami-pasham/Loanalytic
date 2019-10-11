@@ -29,6 +29,11 @@ function validate(){
 }
 
 
+function randomNumber(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+var creditScores = ["802","594","678","734","893","696","598","610","900","843","768","668","545","864","620","659","524","792","885","616","571","607"];
 
 
 function uploadFile(input){
@@ -39,7 +44,7 @@ function uploadFile(input){
         $('#blah')
             .attr('src', e.target.result)
             .width(150)
-            .height(200);
+            .height(150);
     };
 
     reader.readAsDataURL(input.files[0]);
@@ -63,7 +68,7 @@ function uploadFile(input){
   app.controller('formCtrl', function($scope,$http) {
     $scope.loanApplication = {
       applicationId :"",
-      User_id:0,
+      User_id:sessionStorage.getItem("userEmail"),
       firstName: "", 
       lastName: "",
       phone:"",
@@ -79,7 +84,7 @@ function uploadFile(input){
       income:"",
       applicationDate:formatDate(),
       status:"In Progress",
-      creditScore:""
+      creditScore:creditScores[randomNumber(0,20)]
     };
     $scope.reset = function() {
      
@@ -121,7 +126,7 @@ function uploadFile(input){
             // this function handles error
             console.log(response)
         })*/
-      var fd = new FormData();
+      /*var fd = new FormData();
       fd.append('file',input.files);
       
       $http.post("http://localhost:3000/loanapplication/uploadDocument", fd, {
@@ -132,16 +137,25 @@ function uploadFile(input){
       },
       function(response){
         console.log(response);
-      });
-
+      });*/
+      var img_id="";
       if (input.files && input.files[0]) {
+        if(input.id == "addressProof"){
+          img_id="#address_img";
+        }
+        else if( input.id == "ssnProof"){
+          img_id="#ssn_img";
+        }
+        else{
+          img_id="#income_img";
+        }
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#blah')
+            $(img_id)
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+                .width(100)
+                .height(100);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -179,23 +193,7 @@ function uploadFile(input){
             "email": $scope.loanApplication.email,
             "src":"register.png"
         }
-
-        var form_data = new FormData();
-        
-        /*$http.post('http://localhost:3000/loanapplication/createDocument', data, config).then(function(response) {
-            // This function handles succes
-            
-
-            console.log(response);
-            if(response.status == 200 && response.statusText == "OK"){
-              
-            }
-            
-        }, function(response) {
-
-            // this function handles error
-            console.log(response);
-        });*/
+        $('#applicationModal').modal('show');
         /*$http.post('http://localhost:3000/loanapplication/sendEmail', data, config).then(function(response) {
             // This function handles succes
             console.log(response);
@@ -218,6 +216,6 @@ function uploadFile(input){
     }
   });
 
- /*$('#registerModal').on('hidden.bs.modal', function (e) {
-    location.href = '/';
-});*/
+ $('#applicationModal').on('hidden.bs.modal', function (e) {
+    location.href = '/viewapplication';
+});
