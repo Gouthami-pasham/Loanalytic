@@ -9,11 +9,9 @@ router.get('/', function (req, res) {
     res.render('viewapplication.ejs', { title: 'View Application' });
 });
 
-
-
-router.get('/getApplication', function (req, res) {
+router.post('/getApplication', function (req, res) {
     console.log(JSON.stringify(req.body));
-    loanapplication.getApplicationRecords(function(err,count){
+    loanapplication.getApplicationRecords(req.body,function(err,count){
         if(err)
         {
             res.json(err);
@@ -24,9 +22,5 @@ router.get('/getApplication', function (req, res) {
     });
    // res.json(req.body);
 });
-
-
-
-
 
 module.exports = router;
