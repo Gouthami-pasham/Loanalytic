@@ -5,12 +5,14 @@ var registration = require('../models/registration');
 var registrationController = require('../controllers/registration');
 var loanapplicationController = require('../controllers/loanapplication');
 var adminviewapplicationController = require('../controllers/adminviewapplication');
+var approvedpplicationController = require('../controllers/approvedapplication');
 var passwordController = require('../controllers/password');
 
 router.use('/register', registrationController);
 router.use('/forgotpassword', passwordController);
 router.use('/loanapplication', loanapplicationController);
 router.use('/adminviewapplication', adminviewapplicationController);
+router.use('/approvedapplication', approvedpplicationController);
 
 
 /* GET home page. */
