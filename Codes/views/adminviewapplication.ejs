@@ -24,6 +24,10 @@
                                                 <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
                                                 <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
                                             </div>
+                                            <div class="date_Section">
+                                              <h6 class="checkdate">Application Status :{{application.Status}}</h6>
+                                              <h6 class="checkdate">Application Date :{{application.ApplicationDate}}</h6>
+                                          </div>
                                             <div class="button_Section">
                                                 <button type="submit" class="btn btn-primary approve" ng-click="onApprove($index)">Approve</button>
                                                 <button type="submit" class="btn btn-primary reject" ng-click="onReject($index)">Reject</button>

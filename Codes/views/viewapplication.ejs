@@ -1,11 +1,11 @@
 <% include layout.ejs %>
         <div class="container-fluid">
-                <div class="container"  ng-controller="rejectedApplications" ng-init="getRejectedApplication()" >
+                <div class="container"  ng-controller="userViewApplications" ng-init="getApplication()" >
                         <div class="row">
                             <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-2 justify-content-center">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="head_text">Rejected Applications</h4>
+                                        <h4 class="head_text">My Loan Applications</h4>
                                     </div>
                                     <div class="gaadiex-list" ng-repeat="application in totalApplication">
                                         <div class="gaadiex-list-item" >
@@ -25,8 +25,8 @@
                                                 <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
                                             </div>
                                             <div class="date_Section">
-                                                <h6 class="checkdate">Application Status :{{application.Status}}</h6>
-                                                <h6 class="checkdate">Application Date:{{application.ApplicationDate}}</h6>
+                                                <h6 class="checkdate">Interest Type :{{application.Status}}</h6>
+                                                <h6 class="checkdate">Credit Score :{{application.ApplicationDate}}</h6>
                                             </div>
                                           </div>
                                         </div>
@@ -46,6 +46,6 @@
                
         <% include footer.ejs %>
 <link rel="stylesheet" href="css/list.css">
-<script src="../../js/rejectedapplication.js"></script>
+<script src="../../js/viewapplication.js"></script>
 </body>
 </html>
