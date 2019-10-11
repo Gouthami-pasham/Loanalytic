@@ -16,6 +16,11 @@ var loanApplication = {
         return db.query("SELECT * from tb_applications where Status='In Progress'", callback);
     },
 
+    getApprovedRecords: function(callback)
+    {
+        return db.query("SELECT * from tb_applications where Status='Approved'", callback);
+    },
+
     saveApplication: function (req, callback) {
         return db.query('Insert into tb_applications(Application_id,User_id,FirstName,LastName,Gender,Email,Mobile,SSN,LoanAmount,LoanTerm,Income,InterestType,PropertyTax,DownPayment,ApplicationDate,Status,CreditScore) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.applicationId,req.User_id,req.firstName,req.lastName,req.gender,req.email,req.phone,req.ssn,req.loanAmount,req.loanTerm,req.income,req.interestType,req.propertyTax,req.downPayment,req.applicationDate,req.status,req.creditScore], callback);
     },
