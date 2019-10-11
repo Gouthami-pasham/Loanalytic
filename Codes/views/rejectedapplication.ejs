@@ -1,0 +1,47 @@
+<% include layout.ejs %>
+        <div class="container-fluid">
+                <div class="container"  ng-controller="rejectedApplications" ng-init="getRejectedApplication()" >
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-2 justify-content-center">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="head_text">Rejected Applications</h4>
+                                    </div>
+                                    <div class="gaadiex-list" ng-repeat="application in totalApplication">
+                                        <div class="gaadiex-list-item" >
+                                          <img class="gaadiex-list-item-img" src="images/auto.jpg" alt="List user">
+                                          <div class="gaadiex-list-item-text">
+                                            <h5>Name : {{application.FirstName}}</h5>
+                                            <div class="date_Section">
+                                                <h6 class="checkdate">email :  {{application.Email}}</h6>
+                                                <h6 class="checkdate">phone: {{application.Mobile}}</h6>
+                                            </div>
+                                            <div class="date_Section">
+                                                <h6 class="checkdate">Loan Amount: {{application.LoanAmount}}</h6>
+                                                <h6 class="checkdate">Loan Term: {{application.LoanTerm}}</h6>
+                                            </div>
+                                            <div class="date_Section">
+                                                <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
+                                                <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            
+                   
+                            </div>
+                        </div>
+                    <div class="col-xs-4 offset-xs-4  col-md-6 offset-md-3">
+                        <div class ="list_section" >
+
+                        </div>
+                        </div>
+                  </div>
+               
+        <% include footer.ejs %>
+<link rel="stylesheet" href="css/list.css">
+<script src="../../js/rejectedapplication.js"></script>
+</body>
+</html>
