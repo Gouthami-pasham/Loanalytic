@@ -4,11 +4,20 @@ var router = express.Router();
 var registration = require('../models/registration');
 var registrationController = require('../controllers/registration');
 var loanapplicationController = require('../controllers/loanapplication');
+var adminviewapplicationController = require('../controllers/adminviewapplication');
+var approvedpplicationController = require('../controllers/approvedapplication');
+var rejectedapplicationController = require('../controllers/rejectedapplication');
+var viewapplicationController = require('../controllers/viewapplication');
 var passwordController = require('../controllers/password');
 
 router.use('/register', registrationController);
 router.use('/forgotpassword', passwordController);
 router.use('/loanapplication', loanapplicationController);
+router.use('/adminviewapplication', adminviewapplicationController);
+router.use('/approvedapplication', approvedpplicationController);
+router.use('/rejectedapplication', rejectedapplicationController);
+router.use('/viewapplication', viewapplicationController);
+
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -18,6 +27,7 @@ router.get('/', function (req, res) {
 router.get('/adminhome', function (req, res) {
     res.render('adminhome.ejs', { title: 'Login' });
 });
+
 
 router.get('/userhome', function (req, res) {
     res.render('userhome.ejs', { title: 'Login' });
@@ -55,7 +65,9 @@ router.get('/Myprofile', function (req, res) {
 router.get('/uploadfile', function (req, res) {
     res.render('uploadfile.ejs', { title: 'Register' });
 });
-
+router.get('/userPage', function (req, res) {
+    res.render('userPage.ejs');
+});
 router.post('/getUserById', function (req, res) {
     console.log(JSON.stringify(req.body));
     registration.getUserById(req.body,function(err,count){

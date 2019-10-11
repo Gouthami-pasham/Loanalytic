@@ -18,6 +18,7 @@ var users = require('./routes/users');
 var forgotpassword = require('./routes/forgotpassword');
 var loancalculator = require('./routes/loancalculator');
 var loancalculator_education = require('./routes/loancalculator_education');
+var fileUpload = require('express-fileupload')
 
 var registrationController = require('./controllers/registration');
 
@@ -35,6 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 //app.use(expressLayouts)
 app.use(errorHandler())
 app.use('/', routes);

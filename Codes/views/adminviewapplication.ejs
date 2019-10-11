@@ -1,0 +1,128 @@
+<% include adminlayout.ejs %>
+        <div class="container-fluid">
+                <div class="container"  ng-controller="viewApplications" ng-init="getTotalApplication()" >
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-2 justify-content-center">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="head_text">Loan Applications</h4>
+                                    </div>
+                                    <div class="gaadiex-list" ng-repeat="application in totalApplication">
+                                        <div class="gaadiex-list-item" >
+                                          <img class="gaadiex-list-item-img" src="images/auto.jpg" alt="List user">
+                                          <div class="gaadiex-list-item-text">
+                                            <h5>Name : {{application.FirstName}}</h5>
+                                            <div class="date_Section">
+                                                <h6 class="checkdate">email :  {{application.Email}}</h6>
+                                                <h6 class="checkdate">phone: {{application.Mobile}}</h6>
+                                            </div>
+                                            <div class="date_Section">
+                                                <h6 class="checkdate">Loan Amount: {{application.LoanAmount}}</h6>
+                                                <h6 class="checkdate">Loan Term: {{application.LoanTerm}}</h6>
+                                            </div>
+                                            <div class="date_Section">
+                                                <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
+                                                <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
+                                            </div>
+                                            <div class="date_Section">
+                                              <h6 class="checkdate">Application Status :{{application.Status}}</h6>
+                                              <h6 class="checkdate">Application Date :{{application.ApplicationDate}}</h6>
+                                          </div>
+                                            <div class="button_Section">
+                                                <button type="submit" class="btn btn-primary approve" ng-click="onApprove($index)">Approve</button>
+                                                <button type="submit" class="btn btn-primary reject" ng-click="onReject($index)">Reject</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            
+                   
+                            </div>
+                        </div>
+                    <div class="col-xs-4 offset-xs-4  col-md-6 offset-md-3">
+                        <div class ="list_section" >
+
+                        </div>
+                        </div>
+                  </div>
+                  <div id="approveModal" class="modal" tabindex="-1" role="dialog">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Approve Application</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure ? Do you want to Approve this application?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="updateStatus('Approved')">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="rejectModal" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Reject Application</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Are you sure ? Do you want to Reject this application?</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" onclick="updateStatus('Rejected')">Yes</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="approveSuccessModal" class="modal fade">
+                          <div class="modal-dialog modal-confirm">
+                             <div class="modal-content">
+                                <div class="modal-header">
+                                   <div class="icon-box">
+                                      <i class="material-icons">check_circle_outline</i>
+                                   </div>				
+                                   <h4 class="modal-title">Success!</h4>	
+                                </div>
+                                <div class="modal-body">
+                                   <p class="text-center">Application has been approved succesfully</p>
+                                </div>
+                                <div class="modal-footer">
+                                   <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                       <div id="rejectSuccessModal" class="modal fade">
+                          <div class="modal-dialog modal-confirm">
+                             <div class="modal-content">
+                                <div class="modal-header">
+                                   <div class="icon-box">
+                                      <i class="material-icons">check_circle_outline</i>
+                                   </div>				
+                                   <h4 class="modal-title">Success!</h4>	
+                                </div>
+                                <div class="modal-body">
+                                   <p class="text-center">Application has been rejected succesfully</p>
+                                </div>
+                                <div class="modal-footer">
+                                   <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+        <% include footer.ejs %>
+<link rel="stylesheet" href="css/list.css">
+<script src="../../js/adminviewapplication.js"></script>
+</body>
+</html>

@@ -1,114 +1,338 @@
 <% include layout.ejs %>
+<style>
+  .container{
+    margin-top: 60px;
+  }
+  .row{
+    margin-left:10%;
+  }
+  .row_exclude{
+     margin:none;
+  }
+.doc_text{
+   vertical-align: middle !important;
+}
+.document_section{
+   margin-top:25px;
+   margin-bottom:25px;
+   margin-left:0;
+   vertical-align: middle;
+}
+ 
+</style>
 <div class="container">
-    <form class="form-horizontal">
-    <fieldset>
-    <!-- Form Name -->
-    <legend class="text-center">Loan Application/legend>
-    
-    <!-- Text input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="NAME">Name</label>  
-      <div class="col-md-8">
-      <input id="NAME" name="NAME" placeholder="Name" class="form-control input-md" type="text">
-        
-      </div>
+<form class="form-horizontal needs-validation" novalidate  ng-controller="formCtrl" id="loanApplication">
+   <fieldset  >
+      <!-- Form Name -->
+      <legend class="">
+      Loan Application </legend>
+      <!-- Text input-->
+      <div class="row">
+      <div class="form-group col-sm-6 col-md-6">
+               
+          <label class="col-md-6 control-label" for="payment">Loan Type</label>
+          <div class="col-md-8">
+             <select id="loanType" class="form-control" required  ng-model="loanApplication.loanType">
+                <option value="">Loan Type</option>
+                <option value="Personal Loan">Personal Loan</option>
+                <option value="Education Loan">Education Loan</option>
+                <option value="Mortgage Loan">Mortgage Loan</option> 
+             </select>
+             <div class="valid-feedback">
+                Looks good!
+               </div>
+               <div class="invalid-feedback">
+                 Please provide Loan Type / valid Loan Type!
+               </div>
+          </div>
+       
     </div>
-    
-    <!-- Search input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="email">Email</label>
-      <div class="col-md-8">
-        <input id="email" name="email" placeholder="Email" class="form-control input-md" required="" type="search">
-        
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="phone">Mobile</label>  
-      <div class="col-md-8">
-      <input id="phone" name="phone" placeholder="Mobile" class="form-control input-md" required="" type="text">
-        
-      </div>
-    </div>
-    
-    <!-- Select Basic -->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="gender">Gender</label>
-      <div class="col-md-8">
-        <select id="gender" name="gender" class="form-control">
-          <option value="gender">Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
-    </div>
-    
-    
-    
-    <!-- Text input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="people">Number of  months</label>  
-      <div class="col-md-8">
-      <input id="months" name="months" placeholder="Number of months" class="form-control input-md" required="" type="text">
-        
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="date">Date</label>  
-      <div class="col-md-8">
-      <input id="date" name="date" placeholder="Travel date" class="form-control input-md" required="" type="text">
-        
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="ssn">SSN</label>  
-      <div class="col-md-8">
-      <input id="ssn" name="frossnm" placeholder="SSN" class="form-control input-md" required="" type="text">
-        
-      </div>
-    </div>
-    
-    
-    <!-- Text input-->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="price">Price</label>  
-      <div class="col-md-8">
-      <input id="price" name="price" placeholder="Price" class="form-control input-md" required="" type="text">
-        
-      </div>
-    </div>
-    
-    <!-- Select Basic -->
+  </div>
+      <div class="row ">
+         <div class="form-group col-sm-6 col-md-6 " >
+            
+               <label class="col-md-4  control-label  text-left"  for="firstName">First Name</label>  
+               <div class="col-md-8">
+                  <input id="firstName" name="firstName" placeholder="First Name" ng-model="loanApplication.firstName" class="form-control input-md" type="text" required>
+                  <div class="valid-feedback">
+                      Looks good!
+                     </div>
+                     <div class="invalid-feedback">
+                       Please provide First name / valid First name!
+                     </div>
+                </div>
+           
+         </div>
 
-    
-    <!-- Select Basic -->
-    <div class="form-group col-sm-6">
-      <label class="col-md-4 control-label" for="payment">Payment Type</label>
-      <div class="col-md-8">
-        <select id="payment" name="payment" class="form-control">
-          <option value="card">Card</option>
-          <option value="cash">Cash</option>
-        </select>
+         <div class="form-group col-sm-6 col-md-6 " >
+            
+            <label class="col-md-4  control-label  text-left"  for="lastName">Last Name</label>  
+            <div class="col-md-8">
+               <input id="lastName" name="lastName" placeholder="Last Name" ng-model="loanApplication.lastName" class="form-control input-md" type="text" required>
+               <div class="valid-feedback">
+                  Looks good!
+                 </div>
+                 <div class="invalid-feedback">
+                   Please provide Last name / valid Last name!
+                 </div>
+              </div>
+        
       </div>
-    </div>
-    
-    
-    <!-- Button -->
-    <div class="form-group col-sm-12">
-        <div class="col-sm-12 text-center">
-        <button id="submit" name="submit" class="btn btn-success">Submit</button>
+         <!-- Search input-->
       </div>
-    </div>
-    
-    </fieldset>
-    </form>
-   </div> 
- <% include footer.ejs %>
+      <div class="row ">
+         <!-- Text input-->
+         <div class="form-group col-sm-6 col-md-6">
+               
+            <label class="col-md-6 control-label" for="gender">Gender</label>
+            <div class="col-md-8">
+               <select id="gender" name="gender" class="form-control" required ng-model="loanApplication.gender">
+                  <option value="">Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+               </select>
+               <div class="valid-feedback">
+                  Looks good!
+                 </div>
+                 <div class="invalid-feedback">
+                   Please provide Gender!
+                 </div>
+            </div>
+         </div>
+         <div class="form-group col-sm-6 col-md-6 justify-content-center" >
+            
+            <label class="col-md-4 col-sm-4  control-label text-left"  for="email">Email</label>
+            <div class="col-md-8 col-sm-8">
+               <input id="email" name="email" placeholder="Email" class="form-control input-md" ng-model="loanApplication.email" required type="email">
+               <div class="valid-feedback">
+                  Looks good!
+                 </div>
+                 <div class="invalid-feedback">
+                   Please provide email / valid email!
+                 </div>
+              </div>
+        
+      </div>
+         
+            <!-- Select Basic -->
+            
+            
+         </div>
+         <!-- Text input-->
+         <div class="row">
+            <div class="form-group col-sm-6 col-md-6 justify-content-center">
+            
+                <label class="col-sm-6 col-md-6 control-label" for="phone">Mobile</label>  
+                <div class="col-md-8">
+                   <input id="phone" name="phone" placeholder="Mobile" class="form-control input-md" ng-model="loanApplication.phone" required type="tel">
+                   <div class="valid-feedback">
+                      Looks good!
+                     </div>
+                     <div class="invalid-feedback">
+                       Please provide Mobile / valid Mobile!
+                     </div>
+                  </div>
+              </div>
+              <div class="form-group col-sm-6 col-md-6">
+                 
+                    <label class="col-md-6 control-label" for="ssn">SSN</label>  
+                    <div class="col-md-8">
+                       <input id="ssn"  placeholder="SSN" ng-model="loanApplication.ssn" class="form-control input-md" required type="tel">
+                       <div class="valid-feedback">
+                          Looks good!
+                         </div>
+                         <div class="invalid-feedback">
+                           Please provide SSN  / valid SSN!
+                         </div>
+                      </div>
+                 
+              </div>
+            <!-- Text input-->
+            
+         </div>
+         
+         <!-- Text input-->
+         <div class="row">
+            <div class="form-group col-sm-6 col-md-6">
+               
+                  <label class="col-md-6 control-label" for="loanAmount">Loan Amount</label>  
+                  <div class="col-md-8">
+                     <input id="loanAmount" name="loanAmount" placeholder="Loan Amount"  ng-model="loanApplication.loanAmount" class="form-control input-md" required type="tel">
+                     <div class="valid-feedback">
+                        Looks good!
+                       </div>
+                       <div class="invalid-feedback">
+                         Please provide Loan Amount / valid Loan amount!
+                       </div>
+                    </div>
+               
+            </div>
+            <!-- Text input-->
+            <div class="form-group col-sm-6 col-md-6">
+               
+                  <label class="col-md-6 control-label" for="price">Loan Term</label>  
+                  <div class="col-md-8">
+                      <select id="loanTerm"  class="form-control"  required ng-model="loanApplication.loanTerm">
+                          <option value="">Loan Term</option>
+                          <option value="5 years">5 years</option>
+                          <option value="10 years">10 years</option>
+                          <option value="15 years">15 years</option>
+                          <option value="20 years">20 years</option>
+                          <option value="25 years">25 years</option>
+                          <option value="30 years">30 years</option>
+                       </select>
+                       <div class="valid-feedback">
+                          Looks good!
+                         </div>
+                         <div class="invalid-feedback">
+                           Please provide Loan Term!
+                         </div>
+                  </div>
+               </div>
+            
+         </div>
+         <!-- Select Basic -->
+         <!-- Select Basic -->
+         <div class="row">
+            <div class="form-group col-sm-6 col-md-6">
+               
+                <label class="col-md-6 control-label" for="price">Income</label>  
+                <div class="col-md-8">
+                   <input id="income" name="income" placeholder="Income"  ng-model="loanApplication.income" class="form-control input-md" required type="tel">
+                   <div class="valid-feedback">
+                      Looks good!
+                     </div>
+                     <div class="invalid-feedback">
+                       Please provide income / valid income!
+                     </div>
+                  </div>
+             </div>
+            <div class="form-group col-sm-6 col-md-6">
+               
+                  <label class="col-md-6 control-label" for="payment">Interest Type</label>
+                  <div class="col-md-8">
+                     <select id="payment" name="payment" class="form-control"  ng-model="loanApplication.interestType" required>
+                        <option value="">Interest type</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="Halfyearly">Halfyearly</option>
+                        <option value="Yearly">Yearly</option>
+                     </select>
+                     <div class="valid-feedback">
+                        Looks good!
+                       </div>
+                       <div class="invalid-feedback">
+                         Please provide Interest Type!
+                       </div>
+                  </div>
+               
+            </div>
+          </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-6">
+                   
+                      <label class="col-md-6 control-label" for="property">Yearly Property Tax</label>  
+                      <div class="col-md-8">
+                         <input id="property"  placeholder="Property Tax"  ng-model="loanApplication.propertyTax" class="form-control input-md" required type="tel">
+                         <div class="valid-feedback">
+                            Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                             Please provide Property tax / valid Property tax!
+                           </div>
+                        </div>
+                   
+                </div>
+                <!-- Text input-->
+                <div class="form-group col-sm-6 col-md-6">
+                   
+                      <label class="col-md-6 control-label" for="downPayment">Down Payment</label>  
+                      <div class="col-md-8">
+                         <input id="downPayment" placeholder="Down Payment" class="form-control input-md"  ng-model="loanApplication.downPayment" required type="tel">
+                         <div class="valid-feedback">
+                            Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                             Please provide Down payment/ valid Down payment!
+                           </div>
+                        </div>
+                   </div>
+                
+             </div> <!-- -->
+             <legend>Documents</legend>
+           <div class="row document_section">
+            <div class="col-md-12   justify-content-center">
+                  <div class="row">
+               <div class="col-md-3 col-sm-4 doc_text">Address Proof</div> 
+               <div class="col-md-6 col-sm-4 doc_text">
+                  <input  id ="addressProof" type='file' name="ssnProof" onchange="angular.element(this).scope().uploadDocument(this);" />
+            </div>
+            <div class="col-md-3 col-sm-4 doc_text">
+               <img  id="address_img" src="#" alt="" /> 
+            </div>
+            </div>
+            </div>
+         </div>
+         <div class="row document_section" >
+               <div class="col-md-12   justify-content-center">
+                     <div class="row">
+                  <div class="col-md-3 col-sm-4 doc_text">SSN </div> 
+                  <div class="col-md-6 col-sm-4 doc_text">
+                     <input  id ="ssnProof" type='file' name="ssnProof" onchange="angular.element(this).scope().uploadDocument(this);" />
+               </div>
+               <div class="col-md-3 col-sm-4 doc_text">
+                  <img  id="ssn_img" src="#" alt="" /> 
+               </div>
+               </div>
+               </div>
+            </div>
+            <div class="row document_section" >
+                  <div class="col-md-12   justify-content-center">
+                        <div class="row">
+                     <div class="col-md-3 col-sm-4 doc_text">Income Proof</div> 
+                     <div class="col-md-6 col-sm-4 doc_text">
+                        <input  id ="incomeProof" type='file' name="incomeProof" onchange="angular.element(this).scope().uploadDocument(this);" />
+                  </div>
+                  <div class="col-md-3 col-sm-4 doc_text">
+                     <img  id="income_img" src="#" alt="" /> 
+                  </div>
+                  </div>
+                  </div>
+               </div>
+            <div class="form-group col-sm-12">
+               <div class="col-sm-12 text-center">
+                  <button id="submit" name="submit" class="btn btn-success">Submit</button>
+               </div>
+            </div>
+         </div>
+   </fieldset>
+   
+</form>
+<!--<form method="post" id="uploadDocument" action="/uploadDocument" ng-controller="formCtrlDoc" enctype="multipart/form-data">
+   <input type='file' onchange="angular.element(this).scope().uploadFile(this)" />
+            <img id="blah" src="#" alt="your image" /> 
+            <input type="submit" />
+ </form>-->
+</div>
+<div id="applicationModal" class="modal fade">
+      <div class="modal-dialog modal-confirm">
+         <div class="modal-content">
+            <div class="modal-header">
+               <div class="icon-box">
+                  <i class="material-icons">check_circle_outline</i>
+               </div>				
+               <h4 class="modal-title">Success!</h4>	
+            </div>
+            <div class="modal-body">
+               <p class="text-center">Application has been created succesfully</p>
+            </div>
+            <div class="modal-footer">
+               <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </div>
+         </div>
+      </div>
+   </div>
+<% include footer.ejs %>
 <script src="../../js/loanapplication.js"></script>
 </body>
 </html>

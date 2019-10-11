@@ -1,0 +1,68 @@
+body {background: #e2e2e261;}
+/********card frame **************/
+.card {position: relative; border-radius: 3px; background-color: #fff;color: #4f5256;border: 1px solid #f2f2f2;
+    margin-top: 30px;margin-bottom: 16px;background:#fff;}
+.card-header{ padding: 16px;margin:0px;}
+.card-body {position: relative; padding: 16px;}
+
+.gaadiex-list {list-style-type: none; margin: 0;padding: 0;}
+.gaadiex-list>.gaadiex-list-item {padding: 0 22px;}
+.gaadiex-list-item-img  {
+    float: left;
+    width: 58px;
+    height: 58px;
+    margin-top: 52px;
+    margin-bottom: 8px;
+    margin-right: 20px;
+    
+}
+
+.gaadiex-list-item i  {
+    float: left;
+    font-size:48px;
+    width: 58px;
+    height: 58px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+h6.checkdate {
+    display: inline-block;
+    width: 48%;
+}
+
+h4.head_text{
+    color:#df004f;
+}
+
+.date_Section {
+    display: block;
+    width: 100%;
+    margin-left: 70px;
+}
+h6.price {
+    margin-left: 70px;
+}
+.gaadiex-list-item-text {
+    border-bottom: 1px solid #b5afaf99;
+    padding: 10px;
+}
+.border-b-1 {border-bottom: 1px solid rgba(162,162,162,.16);}
+
+.button_Section {
+    text-align: right;
+}
+
+button.btn.btn-primary.approve {
+    width: 86px;
+    background: #0c730c !important;
+    border: 1px solid #0c730c;
+    margin-right: 20px;
+}
+
+button.btn.btn-primary.reject {
+    width: 86px;
+    background: #cc1818 !important;
+    border: 1px solid #cc1818;
+}

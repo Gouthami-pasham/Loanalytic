@@ -63,9 +63,9 @@
                   <div class="row justify-content-center" >
                      <div class="col-md-6 login-form-2">
                         <h3>Admin Login</h3>
-                        <form class="needs-validation form_section"  novalidate action="/adminhome">
+                        <form class="needs-validation form_section" id="adminLogin" novalidate  ng-controller="adminFormController"  action="/adminhome">
                            <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Username *" pattern="[A-Za-z]*" required />
+                              <input type="email" class="form-control" placeholder="Username *" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                               <div class="valid-feedback">
                                  Looks good!
                                 </div>

@@ -1,4 +1,4 @@
-<% include layout.ejs %>
+<% include adminlayout.ejs %>
 <link rel="stylesheet" href="css/adminhome.css">
 <section class="services-area pt-100 pb-70" id="services">
   <div class="container">
@@ -11,11 +11,11 @@
           </div>
       </div>
       <div class="row">
-          <div class="col-lg-4 col-md-6">
+          <!--<div class="col-lg-4 col-md-6">
               
               <div class="single-service" onclick="goToPage('')">
                   <i class="fa fa-user"></i>
-                  <h4>Manage Users</h4>
+                  <a href="/userPage"class="viewapphist"> <h4>Manage User payments</h4></a>
               </div>
               
               
@@ -26,23 +26,23 @@
                   <h4>Manage Loans</h4>
                   
               </div>
-          </div>
+          </div>-->
           <div class="col-lg-4 col-md-6">
-              <div class="single-service" onclick="goToPage('')">
+              <div class="single-service" onclick="goToPage('/adminviewapplication')">
                   <i class="fa fa-user-plus"></i>
-                  <h4>View Application</h4>
+                  <h4>View Applications</h4>
                   
               </div>
           </div>
           <div class="col-lg-4 col-md-6">
-              <div class="single-service" onclick="goToPage('')">
+              <div class="single-service" onclick="goToPage('/approvedapplication')">
                   <i class="fa fa-check"></i>
                   <h4>Approved Applications</h4>
                   <h5></h5>
               </div>
           </div>
           <div class="col-lg-4 col-md-6">
-              <div class="single-service" onclick="goToPage('')">
+              <div class="single-service" onclick="goToPage('/rejectedapplication')">
                   <i class="fa fa-times-circle"></i>
                   <h4>Rejected Applications</h4>
                   <h5></h5>
@@ -66,5 +66,6 @@
           border: none;
       }
       </style>
+      <script src="../../js/adminhome.js"></script>
     </body>
     </html>
