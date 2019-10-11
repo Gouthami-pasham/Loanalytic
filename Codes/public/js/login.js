@@ -11,12 +11,28 @@
 function validate() {
     // Loop over them and prevent submission
     var loginForm = $('#userLoginForm')[0];
+    var adminForm = $('#adminLogin')[0];
+    
     var loginScope = angular.element('[ng-controller=loginFormController]').scope()
     loginForm.addEventListener('submit', loginScope.searchUser);
+    var adminScope = angular.element('[ng-controller=adminFormController]').scope()
+    adminForm.addEventListener('submit', adminScope.submitAdmin);
 }
 
 
 var app = angular.module('myApp', []);
+app.controller("adminFormController",function($scope,$http){
+    $scope.submitAdmin = function(){
+        var adminForm = $('#adminLogin')[0];
+        if (adminForm.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        adminForm.classList.add('was-validated');
+    }
+});
+
+
 var loginFormController = function($scope, $http) {
     $scope.user = {
         email: "",
@@ -25,6 +41,7 @@ var loginFormController = function($scope, $http) {
     $scope.userAuthentication = function(response) {
         var userDetails = response.data[0];
         if (userDetails.password.localeCompare($scope.user.password) == 0) {
+            sessionStorage.setItem("userEmail", userDetails.Email);
             location.href = '/userhome';
         } else {
             $('#password-failed').show();
