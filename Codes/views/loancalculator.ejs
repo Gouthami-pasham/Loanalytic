@@ -1,4 +1,61 @@
 <% include layout.ejs %>
+<script>
+
+  function myFunction() {
+    var loanAmt = document.getElementById("LoanAmt");
+    var loantrm = document.getElementById("duration");
+    var interest_rate = document.getElementById("interest_rate");
+    var Principal = document.getElementById("LoanAmt");
+    var interest=Interest();
+  var prin_intr=+Principal.value + +interest;
+  document.getElementById("princ_intrest").innerHTML = "$"+prin_intr;
+  return prin_intr;
+  }
+
+  function Interest(){
+    var Principal = document.getElementById("LoanAmt");
+    var interest_rate = document.getElementById("interest_rate");
+    var loantrm = document.getElementById("duration");
+    var intrst=+Principal.value * +interest_rate.value/100 * +loantrm.value;
+  document.getElementById("Total_Interest").innerHTML = "$"+intrst;
+  return intrst;
+
+  }
+  function Interest_per(){
+  var prin_intr=myFunction();
+  var interest=Interest();
+  var intrst_per= (interest/prin_intr)*100;
+  return intrst_per;
+
+  }
+
+  function Principal_per(){
+  var prin_intr=myFunction();
+  var Principal = document.getElementById("LoanAmt");
+  var princ_per= (Principal.value/prin_intr)*100;
+  return princ_per;
+
+  }
+
+  function Emi(){
+  var Principal = document.getElementById("LoanAmt");
+  var interest_rate = document.getElementById("interest_rate");
+  var loantrm = document.getElementById("duration");
+  var dur_mnth=loantrm.value*12;
+  var dur_mnth_minus=(loantrm.value*12)-1;
+  var int_amt_mnth=interest_rate.value/(12*100);
+  var powr=Math.pow((1+int_amt_mnth),dur_mnth);
+  var emi= Principal.value * int_amt_mnth * Math.pow(1+int_amt_mnth,dur_mnth)/(Math.pow(1+int_amt_mnth,dur_mnth)-1);
+  //var emi= 500000 * 0.0166 * 3.06;//Math.pow((1+0.0166),24))/((Math.pow(1+0.0166),24)-1);
+
+  //"p="+ +Principal.value + "int amt mnth=" +int_amt_mnth +"dur_month="+dur_mnth + "dur_mnth_minus" +dur_mnth_minus;
+  document.getElementById("emi").innerHTML ="$"+Math.round(emi *100)/100; //"power="+powr+"  p="+ +Principal.value + "int amt mnth=" +int_amt_mnth +"dur_month="+dur_mnth + "dur_mnth_minus" +dur_mnth_minus;;
+  return emi;
+
+
+  }
+
+</script>
 <div class="container">
     <div class="row">
      <div class="col-6">
@@ -9,7 +66,7 @@
                     <form class="needs-validation" >
                        <div class="form-group">
                         <B><label for="LoanAmt" class="header_color">Home price</label></B>
-                          <input type="text" id="LoanAmt" class="form-control" placeholder="Enter Loan Amount*" pattern="[0-9]" required />
+                          <input type="text" id="LoanAmt"  class="form-control" onmouseout="drawChart()" pattern= "[0-9]+" value="80" required />
                           <div class="valid-feedback">
                              Looks good!
                             </div>
@@ -17,10 +74,9 @@
                               Please provide a valid Loan amount
                             </div>
                        </div>
-
                        <div class="form-group">
                          <B><label for="LoanAmt" class="header_color">Down payment</label></B>
-                        <input type="text" class="form-control" placeholder="Enter down payment*" pattern="[0-9]" required />
+                        <input type="text" class="form-control" id="dwn_pmnt" value="20" onmouseout="drawChart()" pattern="[0-9]+" required />
                         <div class="valid-feedback">
                            Looks good!
                           </div>
@@ -28,15 +84,22 @@
                             Please provide a valid Loan Term
                           </div>
                      </div>
-
                      <div class="form-group">
                       <B><label for="LoanAmt" class="header_color">Loan term</label></B>
-                       <select class="form-control" name="drpdwn" >
-                         <option hidden="">Enter loan term</option>
-                         <option value="Monthly">30 Years</option>
-                         <option value="Quarterly">20 Years</option>
-                         <option value="Half Yearly">15 Years</option>
-                         <option value="Annually">10 Years</option>
+                       <select id="duration" class="form-control" onmouseout="drawChart()" name="drpdwn" >
+                         <option value="30">30 Years</option>
+                         <option value="20">20 Years</option>
+                         <option value="15">15 Years</option>
+                         <option value="10">10 Years</option>
+                         <option value="9">9 Years</option>
+                         <option value="8">8 Years</option>
+                         <option value="7">7 Years</option>
+                         <option value="6">6 Years</option>
+                         <option value="5">5 Years</option>
+                         <option value="4">4 Years</option>
+                         <option value="3">3 Years</option>
+                         <option value="2">2 Years</option>
+                         <option value="1">1 Years</option>
                        </select>
                       <div class="valid-feedback">
                          Looks good!
@@ -45,12 +108,9 @@
                           Please provide a valid tax rate
                         </div>
                    </div>
-
-
-
                    <div class="form-group">
                     <B><label for="LoanAmt" class="header_color">Interest rate</label></B>
-                    <input type="text" class="form-control" placeholder="Enter interest rate*" pattern="[0-9]" required />
+                    <input type="text" class="form-control" id="interest_rate" onmouseout="drawChart()" value="10" pattern="[0-9]+" required />
                     <div class="valid-feedback">
                        Looks good!
                       </div>
@@ -58,10 +118,9 @@
                         Please provide a valid tax rate
                       </div>
                  </div>
-
                  <div class="form-group">
                   <B><label for="Loantx" class="header_color">Yearly property taxes</label></B>
-                    <input type="text" id="Loantx" class="form-control" placeholder="Enter property taxes*" pattern="[0-9]" required />
+                    <input type="text" id="Loantx" class="form-control" onmouseout="drawChart()" value="12" pattern="[0-9]+" required />
                     <div class="valid-feedback">
                        Looks good!
                       </div>
@@ -69,10 +128,9 @@
                         Please provide a valid Loan amount
                       </div>
                  </div>
-
                  <div class="form-group">
                   <B><label for="LoanAmt" class="header_color">Yearly homeowners insurance</label></B>
-                    <input type="text" id="LoanAmt" class="form-control" placeholder="Enter home insurance*" pattern="[0-9]" required />
+                    <input type="text" id="home_ins" class="form-control" onmouseout="drawChart()" value="1" pattern="[0-9]+" required />
                     <div class="valid-feedback">
                        Looks good!
                       </div>
@@ -80,12 +138,9 @@
                         Please provide a valid Loan amount
                       </div>
                  </div>
-
-
-
 <br>
-                       <div class="form-group">
-                          <input type="submit" class="btnSubmit" value="Calculate" /><br><br>
+                   <div class="form-group">
+                          <input type="button" class="btnSubmit" onclick="drawChart()" value="Calculate" /><br><br>
                        </div>
 
                       </form>
@@ -100,33 +155,49 @@
                <div class="col-md-12 login-form-1">
 <br><br>
 
+
                             <div id="piechart"></div>
                             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                             <script type="text/javascript">
+
+                            var loanAmt = document.getElementById("LoanAmt");
+
+                              var down_paymentt = document.getElementById("dwn_pmnt");
                             // Load google charts
                             google.charts.load('current', {'packages':['corechart']});
                             google.charts.setOnLoadCallback(drawChart);
                             function drawChart() {
+                            var loanAmt1=  myFunction();
+                            var emi=Emi();
+                            //  var loanAmt1= 90;
+                              var loanAmt2= 20;
                               var data = google.visualization.arrayToDataTable([
                               ['Description', 'Total'],
-                              ['Principal', 80],
-                              ['Interest', 20],
+                              ['Principal', loanAmt1],
+                              ['Interest', loanAmt2],
                             ]);
                               var options = {'title':'Principal and Interest', 'width':550, 'height':400};
                               var chart = new google.visualization.PieChart(document.getElementById('piechart'));
                               chart.draw(data, options);
                             }
-                            </script>
-                            <H5>Principal + Interest.....................$100000</H5>
-                            <H5>Estimated Monthly Payment....$750</H5>
+                            </script>    <div class="row">
+                                 <div class="col-5">
+                              <b>  <div class="header_color">Principal + Interest</div></b>
+                                <b>   <div class="header_color">Interest</div></b>
+                                  <b> <div class="header_color">Monthly Estimation</div></b>
+                                </div>
+                                <div class="col-7">
+                              <b><div class="header_color" id="princ_intrest"></div></b>
+                              <b>  <div class="header_color" id="Total_Interest"></div></b>
+                              <b> <div class="text-danger" id="emi"></div></b>
+                                </div>
+                              </div>
                           </div>
                           </div>
 
 </div>
 </div>
 </div>
-
-
       <% include footer.ejs %>
 
     </body>
