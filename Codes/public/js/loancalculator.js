@@ -1,1 +1,3 @@
-alert("Enter your values to get the estimated amount");
+<script type="text/javascript">
+    prompt("This alert box was called with the onload event");
+  </script>
