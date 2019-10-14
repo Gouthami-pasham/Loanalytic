@@ -46,6 +46,60 @@
                </div>
           </div>
        
+    <form class="form-horizontal">
+    <fieldset>
+    <!-- Form Name -->
+    <legend class="text-center">Loan Application</legend>
+    
+    <!-- Text input-->
+    <div class="form-group col-sm-6">
+      <label class="col-md-4 control-label" for="NAME">Name</label>  
+      <div class="col-md-8">
+      <input id="NAME" name="NAME" placeholder="Name" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Search input-->
+    <div class="form-group col-sm-6">
+      <label class="col-md-4 control-label" for="email">Email</label>
+      <div class="col-md-8">
+        <input id="email" name="email" placeholder="Email" class="form-control input-md" required="" type="search">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group col-sm-6">
+      <label class="col-md-4 control-label" for="phone">Mobile</label>  
+      <div class="col-md-8">
+      <input id="phone" name="phone" placeholder="Mobile" class="form-control input-md" required="" type="text">
+        
+      </div>
+    </div>
+    
+    <!-- Select Basic -->
+    <div class="form-group col-sm-6">
+      <label class="col-md-4 control-label" for="gender">Gender</label>
+      <div class="col-md-8">
+        <select id="gender" name="gender" class="form-control">
+          <option value="gender">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    </div>
+    
+    
+    
+    <!-- Text input-->
+    <div class="form-group col-sm-6">
+      <label class="col-md-4 control-label" for="people">Number of  months</label>  
+      <div class="col-md-8">
+      <input id="months" name="months" placeholder="Number of months" class="form-control input-md" required="" type="text">
+        
+      </div>
+
     </div>
   </div>
       <div class="row ">
@@ -333,6 +387,20 @@
       </div>
    </div>
 <% include footer.ejs %>
+    </div>
+    
+    
+    <!-- Button -->
+    <div class="form-group col-sm-12">
+        <div class="col-sm-2 text-center">
+        <button id="submit" name="submit" class="btn btn-success">Submit</button>
+    </div>
+    </div>
+    
+    </fieldset>
+    </form>
+   </div> 
+ <% include footer.ejs %>
 <script src="../../js/loanapplication.js"></script>
 </body>
 </html>
