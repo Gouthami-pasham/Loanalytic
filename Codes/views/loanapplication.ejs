@@ -269,7 +269,7 @@
    </fieldset>
    
 </form>
-<form action="/loanapplication/uploadDocument" method ="POST" id="documentForm">
+<form action="/loanapplication/uploadDocument"  method ="post" id="documentForm" enctype="multipart/form-data">
    <legend>Documents</legend>
            <div class="row document_section">
             <div class="col-md-12   justify-content-center">
@@ -289,7 +289,7 @@
                      <div class="row">
                   <div class="col-md-3 col-sm-4 doc_text">SSN </div> 
                   <div class="col-md-6 col-sm-4 doc_text">
-                     <input  id ="ssnProof" type='file' name="ssnProof" onchange="angular.element(this).scope().uploadDocument(this);" />
+                     <input  id ="ssnProof" type='file' name="ssnProof" onchange="displayImage(this)" />
                </div>
                <div class="col-md-3 col-sm-4 doc_text">
                   <img  id="ssn_img" src="#" alt="" /> 
@@ -302,7 +302,7 @@
                         <div class="row">
                      <div class="col-md-3 col-sm-4 doc_text">Income Proof</div> 
                      <div class="col-md-6 col-sm-4 doc_text">
-                        <input  id ="incomeProof" type='file' name="incomeProof" onchange="angular.element(this).scope().uploadDocument(this);" />
+                        <input  id ="incomeProof" type='file' name="incomeProof" onchange="displayImage(this)" />
                   </div>
                   <div class="col-md-3 col-sm-4 doc_text">
                      <img  id="income_img" src="#" alt="" /> 
