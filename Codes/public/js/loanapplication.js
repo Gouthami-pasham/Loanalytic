@@ -177,7 +177,7 @@ app.controller('formCtrl', function($scope, $http) {
               console.log(response);
               var theForm = document.forms['documentForm'];
               // Add data:
-              addHidden(theForm, 'application_id', data.applicationId);
+              addHidden(theForm, 'application_id', $scope.loanApplication.applicationId);
               // Submit the form:
               theForm.submit();
               var data = {
@@ -210,5 +210,5 @@ app.controller('formCtrl', function($scope, $http) {
 });
 
 $('#applicationModal').on('hidden.bs.modal', function(e) {
-  location.href = '/viewapplication';
+ // location.href = '/viewapplication';
 });
