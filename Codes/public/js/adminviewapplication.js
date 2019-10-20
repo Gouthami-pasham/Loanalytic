@@ -66,17 +66,21 @@ $scope.updateApplicationStatus = function(status){
           console.log(response);
           $scope.approveApplication = "";
           $scope.rejectApplication = ""
-
-          var data = {
+          if(status == "Approved"){
+            $('#approveModal').modal('hide');
+            $('#approveSuccessModal').modal('show');
+          }
+          else{
+            $('#rejectModal').modal('hide');
+            $('#rejectSuccessModal').modal('show');
+          }
+          /*var data = {
             "subject": "Application Status",
             "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Welcome to Loanalytic</h1>',
             "email": applicationData.Email,
             "src":src
         }
-          $http.post('http://localhost:3000/register/sendEmail', data, config).then(function(response) {
-            // This function handles succes
-            console.log(response);
-            if(response.status == 200 && response.statusText == "OK"){
+       
                 if(status == "Approved"){
                     $('#approveModal').modal('hide');
                     $('#approveSuccessModal').modal('show');
@@ -91,7 +95,7 @@ $scope.updateApplicationStatus = function(status){
 
             // this function handles error
             console.log(response);
-        });
+        });*/
          
           
     

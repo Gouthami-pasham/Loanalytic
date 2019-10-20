@@ -259,13 +259,24 @@
                    </div>
                 
              </div> <!-- -->
-             <legend>Documents</legend>
+             
+            <div class="form-group col-sm-12">
+               <div class="col-sm-12 text-center">
+                  <button id="submit" name="submit" class="btn btn-success">Submit</button>
+               </div>
+            </div>
+         </div>
+   </fieldset>
+   
+</form>
+<form action="/loanapplication/uploadDocument" method ="POST" id="documentForm">
+   <legend>Documents</legend>
            <div class="row document_section">
             <div class="col-md-12   justify-content-center">
                   <div class="row">
                <div class="col-md-3 col-sm-4 doc_text">Address Proof</div> 
                <div class="col-md-6 col-sm-4 doc_text">
-                  <input  id ="addressProof" type='file' name="ssnProof" onchange="angular.element(this).scope().uploadDocument(this);" />
+                  <input  id ="addressProof" type='file' name="addressProof" onchange="displayImage(this)" />
             </div>
             <div class="col-md-3 col-sm-4 doc_text">
                <img  id="address_img" src="#" alt="" /> 
@@ -299,14 +310,6 @@
                   </div>
                   </div>
                </div>
-            <div class="form-group col-sm-12">
-               <div class="col-sm-12 text-center">
-                  <button id="submit" name="submit" class="btn btn-success">Submit</button>
-               </div>
-            </div>
-         </div>
-   </fieldset>
-   
 </form>
 <!--<form method="post" id="uploadDocument" action="/uploadDocument" ng-controller="formCtrlDoc" enctype="multipart/form-data">
    <input type='file' onchange="angular.element(this).scope().uploadFile(this)" />
