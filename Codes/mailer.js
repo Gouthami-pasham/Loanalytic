@@ -70,3 +70,43 @@ module.exports = {
     return d.promise;
   }
 };
+
+/*
+#' Email a user a report is ready
+#'
+#' Requires an account at Mailgun: https://mailgun.com
+#' Pre-verification can only send to a whitelist of emails you configure
+#'
+#' @param email Email to send to
+#' @param mail_message Any extra info
+#'
+#' @return TRUE if successful email sent
+#' @import httr
+#' @export
+sendEmail <- function(email = "XXXXX@you.com",
+                      mail_message = "Hello"){
+
+  url <- "https://api.mailgun.net/v3/sandbox5f2XXXXXXXa.mailgun.org/messages"
+  ## username:password so api_key is all after the api:
+  api_key <- "key-c5957XXXXXXXXXXXbb9cf8ce"
+  the_body <-
+    list(
+      from="Mailgun Sandbox <postmaster@sandbox5XXXXXXXXa.mailgun.org>",
+      to=email,
+      subject="Mailgun from R",
+      text=mail_message
+    )
+
+  req <- httr::POST(url,
+                    httr::authenticate("api", api_key),
+                    encode = "form",
+                    body = the_body)
+
+  httr::stop_for_status(req)
+  
+  TRUE
+
+}
+
+
+*/
