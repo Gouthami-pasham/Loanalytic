@@ -66,3 +66,31 @@ button.btn.btn-primary.reject {
     background: #cc1818 !important;
     border: 1px solid #cc1818;
 }
+
+.hr{margin:5px 0;}
+.accordion-group{margin-bottom:10px;border-radius:0;}
+.accordion-toggle{
+    background:rgb(248, 251, 252);
+		
+}
+
+.accordion-toggle:hover{
+	text-decoration: none;
+	
+}
+
+.accordion-heading .accordion-toggle {
+    display: block;
+    padding: 8px 15px;
+}
+
+
+
+.selectStyle{
+	width:46%; float: left; margin-right: 8%;
+}
+
+
+.accordion-group{
+	margin-bottom:20px;
+}

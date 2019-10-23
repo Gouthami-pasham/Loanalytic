@@ -8,13 +8,13 @@
                                         <h4 class="head_text">Loan Applications</h4>
                                     </div>
                                     <div class="gaadiex-list" ng-repeat="application in totalApplication">
-                                        <div class="gaadiex-list-item" >
+                                    <div class="gaadiex-list-item" >
                                           <img class="gaadiex-list-item-img" src="images/auto.jpg" alt="List user">
                                           <div class="gaadiex-list-item-text">
                                             <h5>Name : {{application.FirstName}}</h5>
                                             <div class="date_Section">
-                                                <h6 class="checkdate">email :  {{application.Email}}</h6>
-                                                <h6 class="checkdate">phone: {{application.Mobile}}</h6>
+                                                <h6 class="checkdate">Email :  {{application.Email}}</h6>
+                                                <h6 class="checkdate">Phone: {{application.Mobile}}</h6>
                                             </div>
                                             <div class="date_Section">
                                                 <h6 class="checkdate">Loan Amount: {{application.LoanAmount}}</h6>
@@ -28,6 +28,24 @@
                                               <h6 class="checkdate">Application Status :{{application.Status}}</h6>
                                               <h6 class="checkdate">Application Date :{{application.ApplicationDate}}</h6>
                                           </div>
+                                          <div class="row">
+                                            <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-2">
+                                               <div class="accordion-group">
+                                            <div class="accordion-heading">
+                                              <a class="accordion-toggle"  data-toggle="collapse" data-parent="toggle" href="#collapseOne">
+                                               <i class="fa fa-plus"></i> Locality
+                                              </a>
+                                            </div>
+                                            <div id="collapseOne" class="accordion-body collapse in">
+                                              <div class="accordion-inner">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis, veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime cumque labore incidunt ad iusto maiores error doloribus. Similique, sequi, laboriosam voluptatum omnis nobis incidunt exercitationem facilis voluptatibus maxime harum accusantium tempore magni voluptate qui velit fugit iste quis aut possimus a praesentium ad in quia. Necessitatibus, excepturi, iste, quisquam expedita ratione quibusdam in ex nobis omnis odit voluptates veritatis recusandae sit. Adipisci perspiciatis laudantium vitae quaerat. Porro, mollitia, sequi cupiditate ratione cumque aut laboriosam fuga et nostrum officia. Expedita, vitae officia recusandae eius assumenda.
+                                        
+                                              </div>
+                                            </div>
+                                        
+                                          </div>
+                                          </div>
+                                        </div>
                                             <div class="button_Section">
                                                 <button type="submit" class="btn btn-primary approve" ng-click="onApprove($index)">Approve</button>
                                                 <button type="submit" class="btn btn-primary reject" ng-click="onReject($index)">Reject</button>

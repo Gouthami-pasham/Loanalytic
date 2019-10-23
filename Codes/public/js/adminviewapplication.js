@@ -5,8 +5,22 @@
     //   var scope = angular.element('[ng-controller=viewApplications]').scope()
     //   scope.getTotalApplication();
     }, false);
+    
    
   })();
+
+  jQuery('.accordion-toggle').click(function(){
+      
+    var has = jQuery(this);
+    if(has.hasClass('collapsed')){
+           jQuery(this).find('i').removeClass('fa-plus');
+           jQuery(this).find('i').addClass('fa-minus');
+    }
+    else{
+        jQuery(this).find('i').removeClass('fa-minus');
+        jQuery(this).find('i').addClass('fa-plus');
+    }
+})
 //ng-init="getTotalApplication()"
 var app = angular.module('myApp', []);
 app.controller('viewApplications', function($scope, $http) {
@@ -24,12 +38,26 @@ app.controller('viewApplications', function($scope, $http) {
         var data = {
             test: "test"
         };
+        var sampleResponse = [
+            {
+                "FirstName":"Gangadhar",
+                "Email":"asasdjndsank@gmail.com",
+                "Phone":"66055280325",
+                "LoanAmount": "43000",
+                "LoanTerm":"3 years",
+                "InterestType": "CreditScore",
+                "CreditScore":"678",
+                "Status":"In Progress",
+                "ApplicationDate":"11-09-2019"
+            }
+        ]
         var config = {
             headers : {
                 'Content-Type': 'application/json'
             }
         }
-        $http.get('http://localhost:3000/adminviewapplication/getTotal').then(function(response) {
+        $scope.totalApplication = sampleResponse;
+       /* $http.get('http://localhost:3000/adminviewapplication/getTotal').then(function(response) {
               // This function handles succes
               console.log(response);
               $scope.totalApplication = response.data;
@@ -38,7 +66,7 @@ app.controller('viewApplications', function($scope, $http) {
 
         // this function handles error
         console.log(response);
-    });
+    });*/
 }
 $scope.updateApplicationStatus = function(status){
     var applicationData = {}; 
