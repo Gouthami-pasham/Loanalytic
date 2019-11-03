@@ -61,31 +61,31 @@ function displayImage(input) {
 }
 
 
-  function uploadFiles(input) {
-      var fd = new FormData();
-      //Take the first selected file
-      fd.append("file", input.files[0]);
+function uploadFiles(input) {
+  var fd = new FormData();
+  //Take the first selected file
+  fd.append("file", input.files[0]);
 
-      /*$http.post("http://localhost:3000/loanapplication/uploadDocument", fd, {
-          withCredentials: true,
-          headers: {'Content-Type': undefined },
-          transformRequest: angular.identity
-      }).then(function (response) {
-        console.log(response);
-      },
-      function(response){
-        console.log(response);
-      });*/
-  }
+  /*$http.post("http://localhost:3000/loanapplication/uploadDocument", fd, {
+      withCredentials: true,
+      headers: {'Content-Type': undefined },
+      transformRequest: angular.identity
+  }).then(function (response) {
+    console.log(response);
+  },
+  function(response){
+    console.log(response);
+  });*/
+}
 
 
-  function addHidden(theForm, key, value) {
-    // Create a hidden input element, and append it to the form:
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key; // 'the key/name of the attribute/field that is sent to the server
-    input.value = value;
-    theForm.appendChild(input);
+function addHidden(theForm, key, value) {
+  // Create a hidden input element, and append it to the form:
+  var input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = key; // 'the key/name of the attribute/field that is sent to the server
+  input.value = value;
+  theForm.appendChild(input);
 }
 
 // Form reference:
@@ -127,32 +127,6 @@ app.controller('formCtrl', function($scope, $http) {
       return year + "" + month + "" + day + "" + toDate.getHours() + "" + toDate.getMinutes() + "" + toDate.getSeconds();
   }
 
-  $scope.uploadDocument = function(input) {
-      /* var data = {
-        hello : "test",
-        fileName : files[0].name,
-        fileType : files[0].type,
-        file: files[0]
-      }
-      var config = {
-        headers : {
-            'Content-Type': 'application/json'
-        }
-      }
-      /*var fd = new FormData();
-      fd.append('file',input.files);
-      
-      $http.post("http://localhost:3000/loanapplication/uploadDocument", fd, {
-          headers: {'Content-Type': undefined },
-          transformRequest: angular.identity
-      }).then(function (response) {
-        console.log(response);
-      },
-      function(response){
-        console.log(response);
-      });*/
-  }
-
   $scope.submitForm = function(event) {
       var form = $('#loanApplication')[0];
       //var data =  $('#loanApplication').serialize();
@@ -161,7 +135,11 @@ app.controller('formCtrl', function($scope, $http) {
           event.stopPropagation();
       }
       form.classList.add('was-validated');
-
+      var theForm = document.getElementById('documentForm');
+      if (theForm[0].files.length == 0 && theForm[1].files.length == 0 && theForm[2].files.length == 0) {
+          window.alert("Please upload required documents");
+          return;
+      }
       if (form.checkValidity()) {
           var config = {
               headers: {
@@ -179,14 +157,31 @@ app.controller('formCtrl', function($scope, $http) {
               // Add data:
               addHidden(theForm, 'application_id', $scope.loanApplication.applicationId);
               // Submit the form:
-              theForm.submit();
+              /* $('#documentForm').ajaxSubmit(function() {
+              });*/
+              var fd = new FormData(document.forms['documentForm']);
+              //Take the first selected file
+
+              $http.post("http://localhost:3000/loanapplication/uploadDocument", fd, {
+                  withCredentials: true,
+                  headers: {
+                      'Content-Type': undefined
+                  },
+                  transformRequest: angular.identity
+              }).then(function(response) {
+                      console.log(response);
+                      $('#applicationModal').modal('show');
+                  },
+                  function(response) {
+                      console.log(response);
+                  });
               var data = {
                   "subject": "Loan Application",
                   "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Your Loan Application created sucessfully</h1>',
                   "email": $scope.loanApplication.email,
                   "src": "register.png"
               }
-              $('#applicationModal').modal('show');
+
               /*$http.post('http://localhost:3000/loanapplication/sendEmail', data, config).then(function(response) {
                   // This function handles succes
                   console.log(response);
@@ -210,5 +205,5 @@ app.controller('formCtrl', function($scope, $http) {
 });
 
 $('#applicationModal').on('hidden.bs.modal', function(e) {
- // location.href = '/viewapplication';
+  location.href = '/viewapplication';
 });

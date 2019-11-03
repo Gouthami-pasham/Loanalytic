@@ -37,63 +37,45 @@ router.post('/uploadDocument', function(req, res) {
     if (!req.files) {
         return res.status(400).send('No files were uploaded.');
     }
-    res.json(req.files);
-   // var fileData = req.files.ssnProof;
-   // console.log(JSON.stringify(fileData.name));
-   // var img_name = fileData.name;
-    //var application_id = req.body.application_id;
-    //if (fileData.mimetype  == "image/jpeg" || fileData.mimetype  == "image/png" ||fileData.mimetype  == "image/PNG"|| fileData.mimetype  == "image/gif") {
-
-          /*  const file = req.files;
-            for(let i = 0 ; i < file.length; i++){
-    
-                file[i].mv('public/images/upload_images/'+application_id+file[i].name, function (err){
-                    if(err){
-                        res.send(err);
-                    }
-    
-                })
-    
-            }
-           res.send('files uploaded');
-    
-    */
-        /*fileData.mv('public/images/upload_images/' + img_name, function(err) {
-            //res.json(req.body)
-            if (err) {
-                console.log(JSON.stringify(err))
-                return res.status(500).send(err);
-                ;
-            } else {
-                 var data = {
-                    "application_id":application_id,
-                    "img_name":img_name,
-                    "filePath":'public/images/upload_images/' + img_name
-                };
-               /* var data = {
-                    "status":200,
-                    "message":"success",
-                }*/
-                //return res.json(data);
-               
-                /*loanApplication.uploadDocument("test",function(err,count){
-                    if(err)
-                    {
-                        console.log(JSON.stringify(err))
-                        res.json(err);
-                    }
-                    else{
-                        console.log(JSON.stringify(count))
-                        res.json(count);
-                    }
-                });
-            }
-        });*/
-   /* } else {
-        message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
-        res.json({"message":message});
-    }*/
-  //  res.json(req.files);
+    //res.json(req.files);
+    var fileArray = [];
+    fileArray.push(req.files.addressProof);
+    fileArray.push(req.files.ssnProof);
+    fileArray.push(req.files.incomeProof);
+    responseData = [];
+    var application_id = req.body.application_id;
+    var DocumentType = ["Address Proof","SSN Proof","Income Proof"]
+   for(let i = 0 ; i < fileArray.length; i++){
+        var fileData = fileArray[i];
+        var docType = DocumentType[i];
+       // console.log(JSON.stringify(fileData.name));
+        var img_name = fileData.name;
+       if (fileData.mimetype  == "image/jpeg" || fileData.mimetype  == "image/png" ||fileData.mimetype  == "image/PNG"|| fileData.mimetype  == "image/gif") {
+            fileData.mv('public/images/upload_images/'+application_id+'_'+fileData.name)
+            var data = {
+                "application_id":application_id,
+                "img_name":img_name,
+                "documentType":docType,
+                "filePath":'public/images/upload_images/'+application_id+'_'+fileData.name
+            };
+            loanApplication.uploadDocument(data,function(err,count){
+                if(err)
+                {
+                    console.log(JSON.stringify(err))
+                    res.json(err);
+                }
+                else{
+                    console.log(JSON.stringify(responseData))
+                }
+            });
+        } else {
+            message = "This format is not allowed , please upload file with '.png','.gif','.jpg'";
+            res.json({"message":message});
+        }
+    }
+   // res.status(204).send();
+   res.json({"message":"Success"})
+   //res.json(req.files)
 });
 
 

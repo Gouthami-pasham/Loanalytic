@@ -5,12 +5,23 @@
     //   var scope = angular.element('[ng-controller=viewApplications]').scope()
     //   scope.getTotalApplication();
     }, false);
-    
-   
+    //collapseList();
+    jQuery('.accordion-toggle').click(function(){
+      
+        var has = jQuery(this);
+        if(has.hasClass('collapsed')){
+               jQuery(this).find('i').removeClass('fa-plus');
+               jQuery(this).find('i').addClass('fa-minus');
+        }
+        else{
+            jQuery(this).find('i').removeClass('fa-minus');
+            jQuery(this).find('i').addClass('fa-plus');
+        }
+  })
   })();
 
-  jQuery('.accordion-toggle').click(function(){
-      
+  $('.accordion-toggle').on('shown.bs.collapse', function () {
+    //call a service here 
     var has = jQuery(this);
     if(has.hasClass('collapsed')){
            jQuery(this).find('i').removeClass('fa-plus');
@@ -20,7 +31,23 @@
         jQuery(this).find('i').removeClass('fa-minus');
         jQuery(this).find('i').addClass('fa-plus');
     }
-})
+});
+
+  function collapseList(){
+    jQuery('.accordion-toggle').click(function(){
+      
+        var has = jQuery(this);
+        if(has.hasClass('collapsed')){
+               jQuery(this).find('i').removeClass('fa-plus');
+               jQuery(this).find('i').addClass('fa-minus');
+        }
+        else{
+            jQuery(this).find('i').removeClass('fa-minus');
+            jQuery(this).find('i').addClass('fa-plus');
+        }
+  })
+}
+
 //ng-init="getTotalApplication()"
 var app = angular.module('myApp', []);
 app.controller('viewApplications', function($scope, $http) {
