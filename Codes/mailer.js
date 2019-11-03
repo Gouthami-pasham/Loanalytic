@@ -70,3 +70,23 @@ module.exports = {
     return d.promise;
   }
 };
+/*
+
+
+email
+  .send({
+    template: 'mars',
+    message: {
+      to: 'crvamsee@lonalytic.com'
+    },
+    locals: {
+      name: 'Elon'
+    }
+  })
+  .then(res => {
+    console.log('res.originalMessage', res.originalMessage)
+  })
+  .catch(console.error);
+  
+
+*/
