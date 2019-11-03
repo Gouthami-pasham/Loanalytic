@@ -39,7 +39,7 @@ var loanApplication = {
     },
 
     uploadDocument:function(req,callback){
-        return db.query('Insert into tb_document(Application_Id,DocumentName,Document) values(?,?,?)',[20191009231,"Naveen","test"],callback);
+        return db.query('Insert into tb_document(Application_Id,DocumentType,DocumentName,DocumentPath) values(?,?,?,?)',[req.application_id,req.documentType,req.img_name,req.filePath],callback);
     }
 
 }
