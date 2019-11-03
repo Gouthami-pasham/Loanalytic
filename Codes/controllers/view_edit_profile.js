@@ -6,5 +6,5 @@ var registration = require('../models/registration');
 var mailer = require('../nodemailer');
 
 router.get('/', function (req, res) {
-    res.render('view_edit_profile.ejs', { title: 'view/edit profile' });
+    res.render('view_edit_profile.ejs', { title: 'view_edit profile' });
 });
