@@ -17,6 +17,11 @@ body {background: #e2e2e261;}
     
 }
 
+
+.clickable{
+    cursor: pointer;   
+}
+
 .gaadiex-list-item i  {
     float: left;
     font-size:48px;
