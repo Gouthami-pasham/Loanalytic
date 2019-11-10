@@ -6,7 +6,7 @@
     //   scope.getTotalApplication();
     }, false);
     //collapseList();
-    jQuery('.accordion-toggle').click(function(){
+    /*jQuery('.accordion-toggle').click(function(){
       
         var has = jQuery(this);
         if(has.hasClass('collapsed')){
@@ -17,10 +17,26 @@
             jQuery(this).find('i').removeClass('fa-minus');
             jQuery(this).find('i').addClass('fa-plus');
         }
-  })
+  })*/
+  
   })();
 
-  $('.accordion-toggle').on('shown.bs.collapse', function () {
+  $(document).on('click', '.panel-heading span.clickable', function(e){
+    var $this = $(this);
+	if(!$this.hasClass('panel-collapsed')) {
+		$this.parents('.panel').find('.panel-body').slideUp();
+		$this.addClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+		
+	} else {
+		$this.parents('.panel').find('.panel-body').slideDown();
+		$this.removeClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+		
+	}
+})
+
+  /*$('.accordion-toggle').on('shown.bs.collapse', function () {
     //call a service here 
     var has = jQuery(this);
     if(has.hasClass('collapsed')){
@@ -31,7 +47,7 @@
         jQuery(this).find('i').removeClass('fa-minus');
         jQuery(this).find('i').addClass('fa-plus');
     }
-});
+});*/
 
   function collapseList(){
     jQuery('.accordion-toggle').click(function(){
@@ -84,7 +100,7 @@ app.controller('viewApplications', function($scope, $http) {
             }
         }
         $scope.totalApplication = sampleResponse;
-       /* $http.get('http://localhost:3000/adminviewapplication/getTotal').then(function(response) {
+       $http.get('http://localhost:3000/adminviewapplication/getTotal').then(function(response) {
               // This function handles succes
               console.log(response);
               $scope.totalApplication = response.data;
@@ -93,7 +109,7 @@ app.controller('viewApplications', function($scope, $http) {
 
         // this function handles error
         console.log(response);
-    });*/
+    });
 }
 $scope.updateApplicationStatus = function(status){
     var applicationData = {}; 
