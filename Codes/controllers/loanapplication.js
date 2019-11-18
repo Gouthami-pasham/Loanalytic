@@ -56,7 +56,7 @@ router.post('/uploadDocument', function(req, res) {
                 "application_id":application_id,
                 "img_name":img_name,
                 "documentType":docType,
-                "filePath":'public/images/upload_images/'+application_id+'_'+fileData.name
+                "filePath":'images/upload_images/'+application_id+'_'+fileData.name
             };
             loanApplication.uploadDocument(data,function(err,count){
                 if(err)

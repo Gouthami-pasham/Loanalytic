@@ -19,6 +19,11 @@ var forgotpassword = require('./routes/forgotpassword');
 var loancalculator = require('./routes/loancalculator');
 var loancalculator_education = require('./routes/loancalculator_education');
 var fileUpload = require('express-fileupload')
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 
 var registrationController = require('./controllers/registration');
 

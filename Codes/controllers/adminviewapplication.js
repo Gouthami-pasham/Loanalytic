@@ -25,6 +25,20 @@ router.get('/getTotal', function (req, res) {
    // res.json(req.body);
 });
 
+router.post('/getDocuments', function (req, res) {
+    console.log(JSON.stringify(req.body));
+    loanapplication.getTotalDocuments(req.body,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(count);
+        }
+    });
+   // res.json(req.body);
+});
+
 router.post('/updateStatus', function (req, res) {
     console.log(JSON.stringify(req.body));
     loanapplication.updateStatus(req.body,function(err,count){

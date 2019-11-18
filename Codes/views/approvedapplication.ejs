@@ -12,10 +12,13 @@
                                           <img class="gaadiex-list-item-img" src="images/auto.jpg" alt="List user">
                                           <div class="gaadiex-list-item-text">
                                             <h5>Name : {{application.FirstName}}</h5>
-                                            <div class="date_Section">
-                                                <h6 class="checkdate">email :  {{application.Email}}</h6>
-                                                <h6 class="checkdate">phone: {{application.Mobile}}</h6>
+                                            <div class="col-sm-12 col-md-12"></div>
+                                            <div class="row"> 
+                                                    <h6 class="col-sm-6 col-xs-6">email :  {{application.Email}}</h6>
+                                                    <h6 class="col-sm-6 col-xs-6">phone: {{application.Mobile}}</h6>
+                                                </div>
                                             </div>
+                                           
                                             <div class="date_Section">
                                                 <h6 class="checkdate">Loan Amount: {{application.LoanAmount}}</h6>
                                                 <h6 class="checkdate">Loan Term: {{application.LoanTerm}}</h6>

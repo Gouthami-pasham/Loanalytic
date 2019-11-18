@@ -6,63 +6,32 @@
     //   scope.getTotalApplication();
     }, false);
     //collapseList();
-    /*jQuery('.accordion-toggle').click(function(){
-      
-        var has = jQuery(this);
-        if(has.hasClass('collapsed')){
-               jQuery(this).find('i').removeClass('fa-plus');
-               jQuery(this).find('i').addClass('fa-minus');
-        }
-        else{
-            jQuery(this).find('i').removeClass('fa-minus');
-            jQuery(this).find('i').addClass('fa-plus');
-        }
-  })*/
-  
-  })();
+  })
 
-  $(document).on('click', '.panel-heading span.clickable', function(e){
+ var panelTest = $('.panel');
+
+ var panelList = document.getElementsByClassName('panel');
+ for (var i = 0; i < panelList.length; ++i) {
+     var item = panelList[i];  
+     $(item).find('.panel-body').slideUp();
+     $(item).find('div.panel-heading.panelColor').addClass('panel-collapsed');
+     //item.innerHTML = 'this is value';
+ }
+  $(document).on('click', '.panel-heading.panelColor', function(e){
     var $this = $(this);
 	if(!$this.hasClass('panel-collapsed')) {
 		$this.parents('.panel').find('.panel-body').slideUp();
 		$this.addClass('panel-collapsed');
-		$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+		$this.find('i').removeClass('fa fa-minus').addClass('fa fa-plus');
 		
 	} else {
 		$this.parents('.panel').find('.panel-body').slideDown();
 		$this.removeClass('panel-collapsed');
-		$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+		$this.find('i').removeClass('fa fa-plus').addClass('fa fa-minus');
 		
 	}
 })
 
-  /*$('.accordion-toggle').on('shown.bs.collapse', function () {
-    //call a service here 
-    var has = jQuery(this);
-    if(has.hasClass('collapsed')){
-           jQuery(this).find('i').removeClass('fa-plus');
-           jQuery(this).find('i').addClass('fa-minus');
-    }
-    else{
-        jQuery(this).find('i').removeClass('fa-minus');
-        jQuery(this).find('i').addClass('fa-plus');
-    }
-});*/
-
-  function collapseList(){
-    jQuery('.accordion-toggle').click(function(){
-      
-        var has = jQuery(this);
-        if(has.hasClass('collapsed')){
-               jQuery(this).find('i').removeClass('fa-plus');
-               jQuery(this).find('i').addClass('fa-minus');
-        }
-        else{
-            jQuery(this).find('i').removeClass('fa-minus');
-            jQuery(this).find('i').addClass('fa-plus');
-        }
-  })
-}
 
 //ng-init="getTotalApplication()"
 var app = angular.module('myApp', []);
@@ -104,7 +73,45 @@ app.controller('viewApplications', function($scope, $http) {
               // This function handles succes
               console.log(response);
               $scope.totalApplication = response.data;
-        
+              var ids = "";
+              for(var i=0;i<$scope.totalApplication.length;i++){
+                    ids += ","+"'"+$scope.totalApplication[i].Application_id+"'";
+                    $scope.totalApplication[i]["incomeProof"] = "";
+                    $scope.totalApplication[i]["ssnProof"] = "";
+                    $scope.totalApplication[i]["addressProof"] = "";
+              }
+              ids = ids.substring(1,ids.length);
+              var data = {
+                  "ids":ids
+              }
+        $http.post('http://localhost:3000/adminviewapplication/getDocuments',data,config).then(function(response) {
+        // This function handles succes
+        console.log(response);
+        var documentData = response.data;
+        for(var i=0;i<$scope.totalApplication.length;i++){
+            for(var j=0;j<documentData.length;j++){
+                    if($scope.totalApplication[i].Application_id == documentData[j].Application_id){
+                        switch(documentData[j].DocumentType){
+                            case "Address Proof":
+                                $scope.totalApplication[i].addressProof = documentData[j].DocumentPath;
+                                break;
+                            case "Income Proof":
+                                $scope.totalApplication[i].incomeProof = documentData[j].DocumentPath; 
+                                break;
+                            case "SSN Proof":
+                                $scope.totalApplication[i].ssnProof = documentData[j].DocumentPath; 
+                                break;
+
+                        }
+                    }
+            }
+        }
+          
+      }, function(response) {
+  
+          // this function handles error
+          console.log(response);
+      });
     }, function(response) {
 
         // this function handles error
@@ -192,3 +199,18 @@ function updateStatus(applicationStatus){
     var scope = angular.element('[ng-controller=viewApplications]').scope()
     scope.updateApplicationStatus(applicationStatus);
 }
+
+$(document).on("hide.bs.collapse show.bs.collapse", ".collapse", e => {
+   $(this).prev().find("i:last-child").toggleClass("fa fa-minus fa fa-plus");
+    var id = e.currentTarget.id.substring(11,e.currentTarget.id.length);
+    $(e.currentTarget.parentElement).find("#btnText"+id)[0].innerHTML = "View Details" + " "+'<span class="fa-stack fa-sm"><i class="fa fa-arrow-up"></i></span>';
+    $(e.currentTarget.parentElement).find("i").toggleClass("fa-arrow-up fa-arrow-down");
+  });
+
+  $(document).on("show.bs.collapse", ".collapse", e => {
+    $(this).prev().find("i:last-child").toggleClass("fa fa-minus fa fa-plus");
+     var id = e.currentTarget.id.substring(11,e.currentTarget.id.length);
+     $(e.currentTarget.parentElement).find("#btnText"+id)[0].innerHTML = "Hide Details"+" " +'<span class="fa-stack fa-sm"><i class="fa fa-arrow-down"></i></span>';
+     
+     $(e.currentTarget.parentElement).find("i").toggleClass("fa-arrow-up fa-arrow-down");
+   });

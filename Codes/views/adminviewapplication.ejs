@@ -20,50 +20,53 @@
                                                 <h6 class="checkdate">Loan Amount: {{application.LoanAmount}}</h6>
                                                 <h6 class="checkdate">Loan Term: {{application.LoanTerm}}</h6>
                                             </div>
-                                            <div class="date_Section">
-                                                <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
-                                                <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
-                                            </div>
-                                            <div class="date_Section">
-                                              <h6 class="checkdate">Application Status :{{application.Status}}</h6>
-                                              <h6 class="checkdate">Application Date :{{application.ApplicationDate}}</h6>
-                                          </div>
+                                            
                                           <div class="row">
-                                            <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-2">
-                                                <div class="panel panel-primary">
-                                                    <div class="panel-heading">
-                                                      <h3 class="panel-title">Panel 1</h3>
-                                                      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-                                                    </div>
-                                                    <div class="panel-body">Panel content</div>
+                                              <div id="accordion" class="myaccordion">
+                                                <div class="card">
+                                                  <div class="card-header" id="headingOne">
+                                                    <h2 class="mb-0">
+                                                      <button id="{{'btnText'+$index}}" class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="{{'#collapseOne'+$index}}" aria-expanded="false" aria-controls="{{'collapseOne'+$index}}">
+                                                        View Details
+                                                        <span class="fa-stack fa-sm"><i class="fa fa-arrow-down"></i></span>
+                                                      </button>
+                                                    </h2>
                                                   </div>
-                                            <!----  <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                              <a class="accordion-toggle"  data-toggle="collapse" data-parent="#collapseOne" href="#collapseOne">
-                                               <i class="fa fa-plus"></i> Locality
-                                              </a>
-                                            </div>
-                                            <div id="collapseOne" class="accordion-body collapse in">
-                                              <div class="accordion-inner">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, voluptas, magnam, officiis, veritatis rerum amet enim in repellendus quae reprehenderit aut ipsum corporis dolore maxime cumque labore incidunt ad iusto maiores error doloribus. Similique, sequi, laboriosam voluptatum omnis nobis incidunt exercitationem facilis voluptatibus maxime harum accusantium tempore magni voluptate qui velit fugit iste quis aut possimus a praesentium ad in quia. Necessitatibus, excepturi, iste, quisquam expedita ratione quibusdam in ex nobis omnis odit voluptates veritatis recusandae sit. Adipisci perspiciatis laudantium vitae quaerat. Porro, mollitia, sequi cupiditate ratione cumque aut laboriosam fuga et nostrum officia. Expedita, vitae officia recusandae eius assumenda.
-                                        
+                                                  <div id="{{'collapseOne'+$index}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                      <div class="view_date_Section">
+                                                        <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
+                                                        <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
+                                                    </div>
+                                                    <div class="view_date_Section">
+                                                      <h6 class="checkdate">Application Status :{{application.Status}}</h6>
+                                                      <h6 class="checkdate">Application Date :{{application.ApplicationDate}}</h6>
+                                                  </div>
+                                                  <div class="document_section">
+                                                    <h6 class="doc_header">Documents : </h6>
+                                                    <div class="doc_value">
+                                                    <a title="View Income Proof" href="{{application.incomeProof}}" target="_blank">Income Proof  </a>
+                                                    <span>|</span>
+                                                    <a title="View Address Proof" href="{{application.addressProof}}" target="_blank">Address Proof</a>
+                                                    <span>|</span>
+                                                    <a title="View SSN Proof"href="{{application.ssnProof}}" target="_blank">SSN Proof </a>
+                                                  </div>
+                                                  </div>
+
+                                                      <div class="button_Section">
+                                                        <button type="submit" class="btn btn-primary approve" ng-click="onApprove($index)">Approve</button>
+                                                        <button type="submit" class="btn btn-primary reject" ng-click="onReject($index)">Reject</button>
+                                                    </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                                               </div>
-                                            </div>
-                                        
-                                          </div>-->
-                                          </div>
                                         </div>
-                                            <div class="button_Section">
-                                                <button type="submit" class="btn btn-primary approve" ng-click="onApprove($index)">Approve</button>
-                                                <button type="submit" class="btn btn-primary reject" ng-click="onReject($index)">Reject</button>
-                                            </div>
                                           </div>
                                         </div>
                                       </div>
                                 </div>
                             </div>
-                            
-                   
                             </div>
                         </div>
                     <div class="col-xs-4 offset-xs-4  col-md-6 offset-md-3">
@@ -72,6 +75,8 @@
                         </div>
                         </div>
                   </div>
+
+                  
                   <div id="approveModal" class="modal" tabindex="-1" role="dialog">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
