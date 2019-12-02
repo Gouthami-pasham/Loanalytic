@@ -69,3 +69,7 @@ a.navbar-brand {
     border-color: #008f95;
     color: #fff !important;
 }
+
+.form-check.form-check-inline {
+    margin-left: .75rem;
+}
