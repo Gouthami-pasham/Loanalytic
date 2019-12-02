@@ -1,4 +1,5 @@
 (function() {
+$('#spinner').hide();
   $('#sendEmail').show();
   $('#email-failed').hide();
       $('#changePassword').hide();
@@ -73,6 +74,22 @@ function password(length) {
   return shuffle(result).join('') // shuffle and make a string
 }
 
+
+let crypto = (function(){
+    return{
+      encryptMessage: function(messageToencrypt){
+        var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, "password");
+        return encryptedMessage.toString();
+      },
+      decryptMessage: function(encryptedMessage){
+        var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, "password");
+        var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
+  
+        return decryptedMessage;
+      }
+    }
+  })();
+
 function validate() {
   // Loop over them and prevent submission
   var mailform = $('#sendEmail')[0];
@@ -83,7 +100,11 @@ function validate() {
   changePasswordform.addEventListener('submit', passwordScope.submitPassword);
 }
 
-var app = angular.module('myApp', []);
+
+var app = angular.module('myApp', ['ngSanitize']);
+app.controller('navController',function($scope){
+    $scope.isVisible = false;
+});
 
 var modalController = function($scope){
   $scope.modal = {
@@ -109,8 +130,8 @@ app.controller('mailformCtrl', function($scope, $http) {
   $scope.user = {
       email: "",
   };
-
-  $scope.subject = "New Password change";
+  
+  $scope.subject = "Password Recovery";
   $scope.email = "";
   $scope.randomPassword = function() {
       return password(8);
@@ -121,10 +142,12 @@ app.controller('mailformCtrl', function($scope, $http) {
       '<h4 style="justify-content:center;">Please enter this password in the change password page and then enter your custom password</h4>';
 
   $scope.searchMail = function(event) {
+    $('#spinner').show();
       var form = $('#sendEmail')[0];
       if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+          $('#spinner').hide();
       }
       form.classList.add('was-validated');
       var data = $scope.user;
@@ -139,6 +162,7 @@ app.controller('mailformCtrl', function($scope, $http) {
               console.log(response);
               if (!response.data.length) {
                   $('#email-failed').show();
+                  $('#spinner').hide();
               } else {
                   $scope.email = response.data[0].Email;
                   sessionStorage.setItem("email", $scope.email);
@@ -153,16 +177,17 @@ app.controller('mailformCtrl', function($scope, $http) {
                       console.log(response);
                       if(response.status == 200 && response.statusText == "OK"){
                         $('#emailModal').modal('show');
+                        $('#spinner').hide();
                       }
                       
                   }, function(response) {
-
+                    $('#spinner').hide();
                       // this function handles error
                       console.log(response);
                   });
               }
           }, function(response) {
-
+            $('#spinner').hide();
               // this function handles error
               console.log(response);
           });
@@ -250,6 +275,7 @@ app.controller('passwordformCtrl', function($scope, $http) {
   }
 
   $scope.submitPassword = function(event) {
+    $('#spinner').show();
       var form = $('#changePassword')[0];
       var autoPassword = sessionStorage.getItem("password")
       if (form.checkValidity() === false) {
@@ -284,7 +310,8 @@ app.controller('passwordformCtrl', function($scope, $http) {
               }
           }
           var data = $scope.user;
-          data.email = sessionStorage.getItem("email")
+          data.email = sessionStorage.getItem("email");
+          data.password = crypto.encryptMessage(data.password);
           $http.post('http://localhost:3000/forgotpassword/updateUserById', data, config).then(function(response) {
               // This function handles succes
               console.log(response);
@@ -297,15 +324,15 @@ app.controller('passwordformCtrl', function($scope, $http) {
             $http.post('http://localhost:3000/forgotpassword/sendEmail', data, config).then(function(response) {
                 // This function handles succes
                 console.log(response);
+                $('#spinner').hide();
                 $('#passwordModal').modal('show');
-
             }, function(response) {
-
+                $('#spinner').hide();
                 // this function handles error
                 console.log(response);
             });
           }, function(response) {
-
+            $('#spinner').hide();
               // this function handles error
               console.log(response);
           });

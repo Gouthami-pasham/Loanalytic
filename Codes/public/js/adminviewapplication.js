@@ -1,4 +1,5 @@
 (function() {
+    $('#spinner').hide();
     window.addEventListener('load', function() {
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
     
@@ -9,6 +10,10 @@
   })
 
  var panelTest = $('.panel');
+ var app = angular.module('myApp',['ngSanitize']);
+ app.controller('navController',function($scope){
+     $scope.isVisible = false;
+ });
 
  var panelList = document.getElementsByClassName('panel');
  for (var i = 0; i < panelList.length; ++i) {
@@ -27,14 +32,13 @@
 	} else {
 		$this.parents('.panel').find('.panel-body').slideDown();
 		$this.removeClass('panel-collapsed');
-		$this.find('i').removeClass('fa fa-plus').addClass('fa fa-minus');
-		
+		$this.find('i').removeClass('fa fa-plus').addClass('fa fa-minus');	
 	}
 })
 
 
 //ng-init="getTotalApplication()"
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngSanitize']);
 app.controller('viewApplications', function($scope, $http) {
     $scope.totalApplication = [];
     $scope.onApprove = function(application){
@@ -46,10 +50,26 @@ app.controller('viewApplications', function($scope, $http) {
         $scope.rejectApplication = application;
         $('#rejectModal').modal('show');
     }
+
+    $scope.formatDate = function(stringDate) {
+       var monthNames = [
+         "January", "February", "March",
+         "April", "May", "June", "July",
+         "August", "September", "October",
+         "November", "December"
+       ];
+       var date = new Date(stringDate);
+       var day = date.getDate();
+       var monthIndex = date.getMonth();
+       var year = date.getFullYear();
+     
+       return "Application Date :"+ day + ' ' + monthNames[monthIndex] + ' ' + year;
+     }
     $scope.getTotalApplication = function(){
         var data = {
             test: "test"
         };
+        $('#spinner').show();
         var sampleResponse = [
             {
                 "FirstName":"Gangadhar",
@@ -106,24 +126,26 @@ app.controller('viewApplications', function($scope, $http) {
                     }
             }
         }
+        $('#spinner').hide();
           
       }, function(response) {
-  
+        $('#spinner').hide();
           // this function handles error
           console.log(response);
       });
     }, function(response) {
-
+        $('#spinner').hide();
         // this function handles error
         console.log(response);
     });
 }
 $scope.updateApplicationStatus = function(status){
+    $('#spinner').show();
     var applicationData = {}; 
     var src = "";
     if(status == "Approved"){
         applicationData = $scope.totalApplication[$scope.approveApplication]
-        src = "approve.png"
+        src = "approved.png"
 
       }
       else{
@@ -144,47 +166,41 @@ $scope.updateApplicationStatus = function(status){
           console.log(response);
           $scope.approveApplication = "";
           $scope.rejectApplication = ""
-          if(status == "Approved"){
-            $('#approveModal').modal('hide');
-            $('#approveSuccessModal').modal('show');
-          }
-          else{
-            $('#rejectModal').modal('hide');
-            $('#rejectSuccessModal').modal('show');
-          }
-          /*var data = {
-            "subject": "Application Status",
-            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Welcome to Loanalytic</h1>',
+          var data = {
+            "subject": "Application Status #" +applicationData.Application_id,
+            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Loanalytic</h1>',
             "email": applicationData.Email,
             "src":src
-        }
-       
-                if(status == "Approved"){
-                    $('#approveModal').modal('hide');
-                    $('#approveSuccessModal').modal('show');
-                  }
-                  else{
-                    $('#rejectModal').modal('hide');
-                    $('#rejectSuccessModal').modal('show');
-                  }
-            }
-            
+        } 
+        $http.post('http://localhost:3000/loanapplication/sendEmail', data, config).then(function(response) {
+                  // This function handles succes
+                  console.log(response);
+                  if(response.status == 200 && response.statusText == "OK"){
+                    if(status == "Approved"){
+                        $('#approveModal').modal('hide');
+                        $('#approveSuccessModal').modal('show');
+                        $('#spinner').hide();
+                      }
+                      else{
+                        $('#rejectModal').modal('hide');
+                        $('#rejectSuccessModal').modal('show');
+                        $('#spinner').hide();
+                      }
+                }
+                     
+              }, function(response) {
+                $('#spinner').hide();
+                  // this function handles error
+                  console.log(response);
+              });
         }, function(response) {
-
+            $('#spinner').hide();
             // this function handles error
             console.log(response);
-        });*/
-         
-          
-    
-}, function(response) {
+        });
+    }
 
-    // this function handles error
-    console.log(response);
 });
-}
-});
-
 $('#approveSuccessModal').on('hidden.bs.modal', function (e) {
     var scope = angular.element('[ng-controller=viewApplications]').scope()
     scope.getTotalApplication();

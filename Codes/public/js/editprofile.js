@@ -37,21 +37,6 @@
     return [year, month, day].join('-');
 }
 
-let crypto = (function(){
-  return{
-    encryptMessage: function(messageToencrypt){
-      var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, "password");
-      console.log(encryptedMessage);
-      return encryptedMessage.toString();
-    },
-    decryptMessage: function(encryptedMessage){
-      var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, "password");
-      var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
-
-      return decryptedMessage;
-    }
-  }
-})();
 
 var app = angular.module('myApp', ['ngSanitize']);
 app.controller('navController',function($scope){
@@ -59,20 +44,34 @@ app.controller('navController',function($scope){
 });
   app.controller('formCtrl', function($scope,$http) {
     $scope.user = {
-      firstName: "", 
-      lastName: "",
-      gender:"",
-      phone:"",
-      email:"",
-      dateofbirth:"",
-      ssn:"",
-      employeestatus:"",
+      FirstName: "", 
+      LastName: "",
+      Mobile:"",
+      Email:"",
+      DateOfBirth:"",
+      SSN:"",
+      Employeestatus:"",
       password:"",
       confirmpassword:"",
     };
     $scope.reset = function() {
      
     };
+    $scope.crypto = (function(){
+        return{
+          encryptMessage: function(messageToencrypt){
+            var encryptedMessage = CryptoJS.AES.encrypt(messageToencrypt, "password");
+            console.log(encryptedMessage);
+            return encryptedMessage.toString();
+          },
+          decryptMessage: function(encryptedMessage){
+            var decryptedBytes = CryptoJS.AES.decrypt(encryptedMessage, "password");
+            var decryptedMessage = decryptedBytes.toString(CryptoJS.enc.Utf8);
+      
+            return decryptedMessage;
+          }
+        }
+      })();
 
     $scope.validateDate = function($event){
       var birthday = event.currentTarget.valueAsDate;
@@ -115,6 +114,31 @@ app.controller('navController',function($scope){
         }   
       }
     }
+    $scope.getUser = function(){
+        var data = {
+            email: sessionStorage.getItem("userEmail")
+        };
+        var config = {
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        }
+        $http.post('http://localhost:3000/register/getUserById',data,config).then(function(response) {
+              // This function handles succes
+              //console.log(response);
+              $scope.user = response.data[0]; 
+              $scope.user.DateOfBirth = new Date($scope.user.DateOfBirth);
+              $scope.user.password = $scope.crypto.decryptMessage( $scope.user.password);
+              $scope.user.confirmpassword = $scope.user.password;
+              
+    }, function(response) {
+        // this function handles error
+        console.log(response);
+    })
+},
+    $scope.goToProfile = function(){
+        location.href = "/profile";
+    }
     $scope.submitForm = function(event){
       $('#spinner').show();
       var form = $('#userRegsitration')[0];
@@ -144,12 +168,12 @@ app.controller('navController',function($scope){
           }
       }
       
-      $scope.user.dateofbirth = new Date($scope.user.dateofbirth); 
+      $scope.user.DateOfBirth = $scope.user.DateOfBirth; 
       var data = $scope.user;
-      data.dateofbirth = formatDate($scope.user.dateofbirth);
-      data.ssn = parseInt($scope.user.ssn);
-      data.password = crypto.encryptMessage(data.password);
-        $http.post('http://localhost:3000/register/createuser', data, config).then(function (response) {
+      data.DateOfBirth = formatDate($scope.user.DateOfBirth);
+      data.SSN = parseInt($scope.user.SSN);
+      data.password = $scope.crypto.encryptMessage(data.password);
+        $http.post('http://localhost:3000/register/updateUser', data, config).then(function (response) {
           // This function handles succes
           console.log(response); 
           var data = {
@@ -182,7 +206,7 @@ app.controller('navController',function($scope){
   });
 
   $('#registerModal').on('hidden.bs.modal', function (e) {
-    location.href = '/';
+    location.href = '/profile';
 });
 
 

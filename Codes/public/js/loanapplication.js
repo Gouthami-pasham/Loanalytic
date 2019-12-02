@@ -1,13 +1,21 @@
 (function() {
-
-  window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    $('#spinner').hide();
+    window.onload = (event) => {
       validate();
-  }, false);
+    };
+  /*window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+     
+      validate();
+  }, false);*/
 
 })();
-var app = angular.module('myApp', []);
 
+
+var app = angular.module('myApp', ['ngSanitize']);
+app.controller('navController',function($scope){
+    $scope.isVisible = false;
+});
 function validate() {
   // Loop over them and prevent submission
   var form = $('#loanApplication')[0];
@@ -91,7 +99,6 @@ function addHidden(theForm, key, value) {
 // Form reference:
 
 
-var app = angular.module('myApp', []);
 app.controller('formCtrl', function($scope, $http) {
   $scope.loanApplication = {
       applicationId: "",
@@ -111,7 +118,8 @@ app.controller('formCtrl', function($scope, $http) {
       income: "",
       applicationDate: formatDate(),
       status: "In Progress",
-      creditScore: creditScores[randomNumber(0, 20)]
+      creditScore: creditScores[randomNumber(0, 20)],
+      premium:""
   };
   $scope.reset = function() {
 
@@ -127,16 +135,59 @@ app.controller('formCtrl', function($scope, $http) {
       return year + "" + month + "" + day + "" + toDate.getHours() + "" + toDate.getMinutes() + "" + toDate.getSeconds();
   }
 
+  $scope.calculateInterest = function(total,year,rate){
+      return (rate/ 100) * total;
+  },
+
+  $scope.calculatePremium = function(){
+    var loanTerm = $scope.loanApplication.loanTerm;
+    var loanAmount = parseInt($scope.loanApplication.loanAmount);
+    var interestType = $scope.loanApplication.interestType;
+    var premium = "";
+    switch(interestType){
+      case "Monthly":
+          var term = parseInt(loanTerm.split(" ")[0]);
+          var totalMonths = term * 12;
+          var interest = ($scope.calculateInterest(loanAmount,term,15))/totalMonths;
+          premium = (loanAmount/totalMonths) + interest;
+          break;
+      case "Quarterly":
+              var term = parseInt(loanTerm.split(" ")[0]);
+              var totalMonths = (term * 4);
+              var interest = ($scope.calculateInterest(loanAmount,term,15))/totalMonths;
+              premium = (loanAmount/totalMonths) + interest;
+              break;
+      
+      case "Halfyearly":
+              var term = parseInt(loanTerm.split(" ")[0]);
+              var totalMonths = (term * 2);
+              var interest = ($scope.calculateInterest(loanAmount,term,15))/totalMonths;
+              premium = (loanAmount/totalMonths) + interest;
+              break;
+      
+      case "Yearly":
+              var term = parseInt(loanTerm.split(" ")[0]);
+              var totalMonths = term;
+              var interest = ($scope.calculateInterest(loanAmount,term,15))/totalMonths;
+              premium = (loanAmount/totalMonths) + interest;
+              break;
+      }
+      return premium;
+  }
+
   $scope.submitForm = function(event) {
+    $('#spinner').show();
       var form = $('#loanApplication')[0];
       //var data =  $('#loanApplication').serialize();
       if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+          $('#spinner').hide();
       }
       form.classList.add('was-validated');
       var theForm = document.getElementById('documentForm');
       if (theForm[0].files.length == 0 && theForm[1].files.length == 0 && theForm[2].files.length == 0) {
+        $('#spinner').hide();
           window.alert("Please upload required documents");
           return;
       }
@@ -146,10 +197,11 @@ app.controller('formCtrl', function($scope, $http) {
                   'Content-Type': 'application/json'
               }
           }
-
           var data = $scope.loanApplication;
           data.ssn = parseInt($scope.loanApplication.ssn);
           data.applicationId = parseInt($scope.getApplicationId());
+          data.premium = $scope.calculatePremium();
+          
           $http.post('http://localhost:3000/loanapplication/saveApplication', data, config).then(function(response) {
               // This function handles succes
               console.log(response);
@@ -170,33 +222,35 @@ app.controller('formCtrl', function($scope, $http) {
                   transformRequest: angular.identity
               }).then(function(response) {
                       console.log(response);
-                      $('#applicationModal').modal('show');
+                     
                   },
                   function(response) {
                       console.log(response);
+                      $('#spinner').hide();
                   });
               var data = {
                   "subject": "Loan Application",
                   "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Your Loan Application created sucessfully</h1>',
                   "email": $scope.loanApplication.email,
-                  "src": "register.png"
+                  "src": "apply.png"
               }
 
-              /*$http.post('http://localhost:3000/loanapplication/sendEmail', data, config).then(function(response) {
+              $http.post('http://localhost:3000/loanapplication/sendEmail', data, config).then(function(response) {
                   // This function handles succes
                   console.log(response);
                   if(response.status == 200 && response.statusText == "OK"){
-                    
+                    $('#spinner').hide();
+                    $('#applicationModal').modal('show');
                   }
                   
               }, function(response) {
-
+                $('#spinner').hide();
                   // this function handles error
                   console.log(response);
-              });*/
+              });
 
           }, function(response) {
-
+            $('#spinner').hide();
               // this function handles error
               console.log(response);
           });
