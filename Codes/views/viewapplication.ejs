@@ -9,27 +9,60 @@
                                     </div>
                                     <div class="gaadiex-list" ng-repeat="application in totalApplication">
                                         <div class="gaadiex-list-item" >
-                                          <img class="gaadiex-list-item-img" src="images/auto.jpg" alt="List user">
-                                          <div class="gaadiex-list-item-text">
-                                            <h5>Name : {{application.FirstName}}</h5>
-                                            <div class="date_Section">
-                                                <h6 class="checkdate">email :  {{application.Email}}</h6>
-                                                <h6 class="checkdate">phone: {{application.Mobile}}</h6>
-                                            </div>
-                                            <div class="date_Section">
-                                                <h6 class="checkdate">Loan Amount: {{application.LoanAmount}}</h6>
-                                                <h6 class="checkdate">Loan Term: {{application.LoanTerm}}</h6>
-                                            </div>
-                                            <div class="date_Section">
-                                                <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
-                                                <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
-                                            </div>
-                                            <div class="date_Section">
-                                                <h6 class="checkdate">Interest Type :{{application.Status}}</h6>
-                                                <h6 class="checkdate">Credit Score :{{application.ApplicationDate}}</h6>
+                                            <img class="gaadiex-list-item-img" src="images/auto.jpg" alt="List user">
+                                            <div class="gaadiex-list-item-text">
+                                              <h5>Name : {{application.FirstName}}</h5>
+                                              <div class="date_Section">
+                                                  <h6 class="checkdate">Email :  {{application.Email}}</h6>
+                                                  <h6 class="checkdate">Phone: {{application.Mobile}}</h6>
+                                              </div>
+                                              <div class="date_Section">
+                                                  <h6 class="checkdate">Loan Amount: {{application.LoanAmount+" $"}}</h6>
+                                                  <h6 class="checkdate">Loan Term: {{application.LoanTerm}}</h6>
+                                              </div>
+                                              
+                                            <div class="row">
+                                                <div id="accordion" class="myaccordion">
+                                                  <div class="card">
+                                                    <div class="card-header" id="headingOne">
+                                                      <h2 class="mb-0">
+                                                        <button id="{{'btnText'+$index}}" class="d-flex align-items-center justify-content-between btn btn-link collapsed" data-toggle="collapse" data-target="{{'#collapseOne'+$index}}" aria-expanded="false" aria-controls="{{'collapseOne'+$index}}">
+                                                          View Details
+                                                          <span class="fa-stack fa-sm"><i class="fa fa-arrow-down"></i></span>
+                                                        </button>
+                                                      </h2>
+                                                    </div>
+                                                    <div id="{{'collapseOne'+$index}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                      <div class="card-body">
+                                                        <div class="view_date_Section">
+                                                          <h6 class="checkdate">Interest Type :{{application.InterestType}}</h6>
+                                                          <h6 class="checkdate">Credit Score :{{application.CreditScore}}</h6>
+                                                      </div>
+                                                      <div class="view_date_Section">
+                                                        <h6 class="checkdate">Application Status :{{application.Status}}</h6>
+                                                        <h6 class="checkdate" ng-bind-html="formatDate(application.ApplicationDate)"></h6>
+                                                    </div>
+                                                    <div class="view_date_Section">
+                                                      <h6 class="checkdate">Income :{{application.Income+" $"}}</h6>
+                                                      <h6 class="checkdate">Premium Installment:{{application.Premium+" $"}}</h6>
+                                                  </div>
+                                                    <div class="document_section">
+                                                      <h6 class="doc_header">Documents : </h6>
+                                                      <div class="doc_value">
+                                                      <a title="View Income Proof" data-title="A new page" href="{{application.incomeProof}}" target="_blank">Income Proof  </a>
+                                                      <span>|</span>
+                                                      <a title="View Address Proof" href="{{application.addressProof}}" target="_blank">Address Proof</a>
+                                                      <span>|</span>
+                                                      <a title="View SSN Proof"href="{{application.ssnProof}}" target="_blank">SSN Proof </a>
+                                                    </div>
+                                                    </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                          </div>
                                             </div>
                                           </div>
-                                        </div>
                                       </div>
                                 </div>
                             </div>
@@ -43,7 +76,42 @@
                         </div>
                         </div>
                   </div>
-               
+                  <div class="container pull-right" id="chatbox">
+                    <div class="row chat-window col-xs-5 col-md-3 pull-right" id="chat_window_1">
+                       <div class="col-xs-12 col-md-12 col-sm-12">
+                          <div class="panel panel-default">
+                             <div class="panel-heading top-bar">
+                                <div class="row">
+                                   <div class="col-md-7 col-xs-8 col-sm-8 ">
+                                      <h3 class="panel-title"><span class="fa fa-comment"></span> Chat</h3>
+                                   </div>
+                                   <div class="col-md-4 col-xs-4 col-sm-4 " style="text-align: right;">
+                                      <a class="min_icon" href="#"><span id="minim_chat_window" class="fa fa-minus icon_minim"></span></a>
+                                      <!--<a href="#"><span class="fa fa-remove icon_close" data-id="chat_window_1"></span></a>-->
+                                   </div>
+                                </div>
+                             </div>
+                             <div class="panel-body">
+                             <div id="messagebody" class="msg_container_base">
+                             
+                             </div>
+                             <div id="notifyUser"></div>
+                             <div class="panel-footer">
+                                     <div class="input-group">
+                                         <input type="hidden" id="user" value="" />
+                                        <input id="btn-input" type="text" onkeyup="notifyTyping();" class="form-control input-sm chat_input" placeholder="Write your message here..." required="required" />
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+                                        </span>
+                                     </div>
+                                  </div>
+                         </div>
+                             
+                          </div>
+                         
+                       </div>
+                    </div>
+                 </div>
         <% include footer.ejs %>
 <link rel="stylesheet" href="css/list.css">
 <script src="../../js/viewapplication.js"></script>

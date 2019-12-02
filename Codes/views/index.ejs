@@ -1,7 +1,7 @@
 ﻿
 
 <% include layout.ejs %>
-<div class="container login-container">
+<div class="container login-container" >
       <div class="row">
          <div class="col-md-12">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -12,12 +12,12 @@
                   <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="admin" aria-selected="false">Admin</a>
                </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
+            <div class="tab-content" id="myTabContent" >
                <div class="tab-pane fade show active text-align form-new" id="user" role="tabpanel" aria-labelledby="user-tab">
                   <div class="row justify-content-center">
                      <div class="col-md-6 login-form-1">
                         <h3>User Login</h3>
-                        <form class="needs-validation"   novalidate ng-controller="loginFormController" id="userLoginForm">
+                        <form class="needs-validation" novalidate ng-controller="loginFormController" id="userLoginForm" ng-init="validate()">
                            <div class="form-group">
                               <input type="text" class="form-control" placeholder="Email *" ng-model="user.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                               <div class="valid-feedback">
@@ -63,27 +63,30 @@
                   <div class="row justify-content-center" >
                      <div class="col-md-6 login-form-2">
                         <h3>Admin Login</h3>
-                        <form class="needs-validation form_section" id="adminLogin" novalidate  ng-controller="adminFormController"  action="/adminhome">
+                        <form class="needs-validation form_section" id="adminLogin" novalidate  ng-controller="adminFormController" >
                            <div class="form-group">
-                              <input type="email" class="form-control" placeholder="Username *" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+                              <input type="email" class="form-control" placeholder="Username *" ng-model="admin.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                               <div class="valid-feedback">
                                  Looks good!
                                 </div>
                                 <div class="invalid-feedback">
                                   Please provide username / valid username!
                                 </div>
+                                <div class="alert alert-danger" role="alert" id="adminemail-failed">
+                                    Please provide valid Email!
+                                  </div>
                            </div>
                            <div class="form-group">
-                              <input type="password" class="form-control" id="myPassword" pattern="[A-Za-z]*[0-9]*" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="password" required />
-
-                              
-                                        
+                              <input type="password" class="form-control" id="myPassword" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{5,20})" ng-model="admin.password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="password" required />
                               <div class="valid-feedback">
                                  Looks good!
                                 </div>
                                 <div class="invalid-feedback">
                                   Please provide password / valid password!
                                 </div>
+                                <div class="alert alert-danger" role="alert" id="adminpassword-failed">
+                                    Please provide valid password!
+                                  </div>
                            </div>
                            <div class="form-group">
                               <input type="submit" class="btnSubmit" value="Login" />
@@ -95,6 +98,9 @@
                      </div>
                   </div>
                </div>
+               <div class="loading" id="spinner">
+                  <div class="loader"></div>
+              </div>
                <div id="myModal" class="modal fade">
                   <div class="modal-dialog modal-confirm">
                      <div class="modal-content">

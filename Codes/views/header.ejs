@@ -7,19 +7,19 @@
     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333"  ng-controller="navController">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/userhome">Home
+        <a class="nav-link" ng-hide="isVisible" href="/userhome">Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" ng-hide="isVisible">
         <a class="nav-link" href="/loanapplication">Apply Loan</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item" ng-hide="isVisible">
         <a class="nav-link" href="/viewapplication">View Applications</a>
       </li>
      <!-- <li class="nav-item dropdown">
@@ -55,7 +55,6 @@
           <i class="fab fa-facebook"></i>
         </a>
       </li>
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -63,12 +62,11 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="/">Logout</a>
-          <a class="dropdown-item" href="/MyProfile">My Profile</a>
+          <a class="dropdown-item" ng-hide="isVisible" href="/">Logout</a>
+          <a class="dropdown-item" ng-hide="isVisible" href="/profile">My Profile</a>
           <a class="dropdown-item" href="/contact_us">Contact us</a>
-          <a class="dropdown-item" href="/feedback_page">Customar feedback</a>
+          <a class="dropdown-item" ng-hide="isVisible" href="/feedback_page">Customar feedback</a>
           <a class="dropdown-item" href="/AboutUs">About Us</a>
-
         </div>
       </li>
     </ul>

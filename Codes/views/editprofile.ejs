@@ -5,14 +5,15 @@
     <hr>
     
     <article class="card-body mx-auto" style="max-width: 400px;">
-        <h4 class="card-title mt-3 text-center">Create Account</h4>
-        <form  class="needs-validation" novalidate  ng-controller="formCtrl" id="userRegsitration" > 
+        <h4 class="card-title mt-3 text-center">Edit Profile</h4>
+        <hr>
+        <form  class="needs-validation" novalidate  ng-controller="formCtrl" id="userRegsitration" ng-init="getUser()"> 
          <!-- form-group// -->
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="First Name *" type="text"  ng-model="user.firstName" pattern="[A-Za-z]*" required >
+            <input name="" class="form-control" placeholder="First Name *" type="text"  ng-model="user.FirstName" pattern="[A-Za-z]*" required >
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -24,7 +25,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="Last Name" type="text"  ng-model="user.lastName" pattern="[A-Za-z]*" required >
+            <input name="" class="form-control" placeholder="Last Name" type="text"  ng-model="user.LastName" pattern="[A-Za-z]*" required >
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -33,29 +34,29 @@
                </div>
         </div>
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-venus-mars"></i> </span>
-             </div>
-             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" ng-model="user.gender" id="inlineRadio1" value="Male">
-                <label class="form-check-label" for="inlineRadio1">Male</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" ng-model="user.gender" id="inlineRadio2" value="Female">
-                <label class="form-check-label" for="inlineRadio2">Female</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" ng-model="user.gender" id="inlineRadio3" value="Other" >
-                <label class="form-check-label" for="inlineRadio3">Other</label>
-              </div>
-            <div class="valid-feedback">
-                Looks good!
-               </div>
-               <div class="invalid-feedback">
-                 Please provide Gender / valid Gender!
-               </div>
-        
-    </div>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-venus-mars"></i> </span>
+                 </div>
+                 <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" ng-model="user.Gender" id="inlineRadio1" value="Male">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" ng-model="user.Gender" id="inlineRadio2" value="Female">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" ng-model="user.Gender" id="inlineRadio3" value="Other" >
+                    <label class="form-check-label" for="inlineRadio3">Other</label>
+                  </div>
+                <div class="valid-feedback">
+                    Looks good!
+                   </div>
+                   <div class="invalid-feedback">
+                     Please provide Gender / valid Gender!
+                   </div>
+            
+        </div>
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -63,7 +64,7 @@
             <select class="custom-select" style="max-width: 120px;">
                 <option selected="">+1</option>
             </select>
-            <input name="" class="form-control" placeholder="Phone Number" ng-model="user.phone"  type="tel" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required>
+            <input name="" class="form-control" placeholder="Phone Number" ng-model="user.Mobile"  type="tel" pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required>
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -75,7 +76,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
              </div>
-            <input name="" class="form-control" placeholder="Email Address"  ng-model="user.email" type="email"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <input name="" class="form-control" placeholder="Email Address"  ng-model="user.Email" type="email"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -89,7 +90,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
                  </div>
-                <input name="" class="form-control" ng-change="validateDate(event)" placeholder="Date Of Birth" type="date" ng-model="user.dateofbirth" required>
+                <input name="" class="form-control" ng-change="validateDate(event)" placeholder="Date Of Birth" type="date" ng-model="user.DateOfBirth" required>
                 <div class="valid-feedback">
                     Looks good!
                    </div>
@@ -105,7 +106,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-id-card"></i> </span>
             </div>
-            <input name="" class="form-control" placeholder="SSN"  type="tel" ng-model="user.ssn" pattern="^\d{3}\d{2}\d{4}$" required>
+            <input name="" class="form-control" placeholder="SSN"  type="tel" ng-model="user.SSN" pattern="^\d{3}\d{2}\d{4}$" required>
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -117,7 +118,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-users"></i> </span>
             </div>
-                <select class="form-control" required ng-model="user.employeestatus">
+                <select class="form-control" required ng-model="user.Employeestatus">
                     <option value=""> Select</option>
                     <option value="Employed">Employed</option>
                     <option value="UnEmployed">UnEmployed</option>
@@ -136,7 +137,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
-            <input class="form-control" placeholder="Create Password" type="password" ng-model="user.password" required pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{5,20})">
+            <input class="form-control" placeholder="Update Password" type="password" ng-model="user.password" required pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{5,20})">
             <div class="valid-feedback">
                 Looks good!
                </div>
@@ -168,9 +169,12 @@
               </div>
        <!-- form-group// -->                                      
         <div class="form-group">
-            <button   class="btn btn-primary btn-block" > Register </button>
-        </div> <!-- form-group// -->      
-        <p class="text-center">Have an account? <a href="/">Log In</a> </p>                                                                 
+            <button   class="btn btn-primary btn-block" > Update </button>
+        </div> <!-- form-group// -->   
+        <div class="form-group">
+                <button  ng-click="goToProfile()" class="btn btn-primary btn-block" > Cancel </button>
+            </div> <!-- form-group// -->    
+                                                                 
     </form>
     </article>
     </div> 
@@ -188,7 +192,7 @@
                  <h4 class="modal-title">Success!</h4>	
               </div>
               <div class="modal-body">
-                 <p class="text-center">User has been registered succesfully</p>
+                 <p class="text-center">User has been Updated succesfully</p>
               </div>
               <div class="modal-footer">
                  <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
@@ -197,7 +201,7 @@
         </div>
      </div>
      <% include footer.ejs %>
-    <script src="../../js/registration.js"></script>
+    <script src="../../js/editprofile.js"></script>
 </body>
 </html>
     
