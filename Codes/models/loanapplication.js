@@ -13,7 +13,7 @@ var loanApplication = {
 
     getTotalRecords: function(callback)
     {
-        return db.query("SELECT * from tb_applications where Status ='In Progress'", callback);
+        return db.query("SELECT * from tb_applications where Status ='In Progress' ORDER BY ApplicationDate desc", callback);
     },
     
     getTotalDocuments: function(reqData,callback)
@@ -23,19 +23,19 @@ var loanApplication = {
 
     getApplicationRecords: function(req,callback)
     {
-        return db.query('SELECT * from tb_applications where User_id ='+"'"+req.email+"'", callback);
+        return db.query('SELECT * from tb_applications where User_id ='+"'"+req.email+"' ORDER BY ApplicationDate desc", callback);
     },
     getApprovedRecords: function(callback)
     {
-        return db.query("SELECT * from tb_applications where Status='Approved'", callback);
+        return db.query("SELECT * from tb_applications where Status='Approved' ORDER BY ApplicationDate desc", callback);
     },
     getRejectedRecords: function(callback)
     {
-        return db.query("SELECT * from tb_applications where Status='Rejected'", callback);
+        return db.query("SELECT * from tb_applications where Status='Rejected' ORDER BY ApplicationDate desc", callback);
     },
 
     saveApplication: function (req, callback) {
-        return db.query('Insert into tb_applications(Application_id,User_id,FirstName,LastName,Gender,Email,Mobile,SSN,LoanAmount,LoanTerm,Income,InterestType,PropertyTax,DownPayment,ApplicationDate,Status,CreditScore) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.applicationId,req.User_id,req.firstName,req.lastName,req.gender,req.email,req.phone,req.ssn,req.loanAmount,req.loanTerm,req.income,req.interestType,req.propertyTax,req.downPayment,req.applicationDate,req.status,req.creditScore], callback);
+        return db.query('Insert into tb_applications(Application_id,User_id,FirstName,LastName,Gender,Email,Mobile,SSN,LoanAmount,LoanTerm,Income,InterestType,PropertyTax,DownPayment,ApplicationDate,Status,CreditScore,Premium) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[req.applicationId,req.User_id,req.firstName,req.lastName,req.gender,req.email,req.phone,req.ssn,req.loanAmount,req.loanTerm,req.income,req.interestType,req.propertyTax,req.downPayment,req.applicationDate,req.status,req.creditScore,req.premium], callback);
     },
     
 
