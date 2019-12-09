@@ -2,6 +2,8 @@
     $('#sendEmail').show();
     $('#email-failed').hide();
     $('#password-failed').hide();
+    $('#activate-failed').hide();
+    
     $('#spinner').hide();
     window.onload = (event) => {
         //console.log('page is fully loaded');
@@ -15,6 +17,7 @@ $(document).on('click', '#admin-tab', function(e){
     var $this = $(this);
     $('#adminemail-failed').hide();
     $('#adminpassword-failed').hide();
+    $('#activate-failed').hide();
     $('#spinner').hide();
     validate();
 })
@@ -23,6 +26,7 @@ $(document).on('click', '#user-tab', function(e){
     var $this = $(this);
     $('#email-failed').hide();
     $('#password-failed').hide();
+    $('#activate-failed').hide();
     $('#spinner').hide();
     validate();
 })
@@ -143,7 +147,12 @@ var loginFormController = function($scope, $http) {
     $scope.userAuthentication = function(response) {
         var userDetails = response.data[0];
         var decryptedPassword = crypto.decryptMessage(userDetails.password);
-        if (decryptedPassword.localeCompare($scope.user.password) == 0) {
+        if(userDetails.isActivated == 'N'){
+            $('#activate-failed').show();
+            $('#spinner').hide();
+            return;
+        }
+        else if (decryptedPassword.localeCompare($scope.user.password) == 0) {
             sessionStorage.setItem("userEmail", userDetails.Email);
             sessionStorage.setItem("userName", userDetails.FirstName);
             $('#spinner').hide();

@@ -69,6 +69,7 @@ app.controller('navController',function($scope){
       employeestatus:"",
       password:"",
       confirmpassword:"",
+      isactivated:"N"
     };
     $scope.reset = function() {
      
@@ -153,8 +154,10 @@ app.controller('navController',function($scope){
           // This function handles succes
           console.log(response); 
           var data = {
-            "subject": "User Registration",
-            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Welcome to Loanalytic</h1>',
+            "subject": "Email Verification",
+            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" />' +
+            '<br><h1 style="color:#008f95;">Welcome to Loanalytic</h1>'+
+            '<br><a href="http://localhost:3000/register/activateUser/'+$scope.user.email+'"'+' style="font-size:40px;">Click here to confirm your email</a>',
             "email": $scope.user.email,
             "src":"register.png"
         }

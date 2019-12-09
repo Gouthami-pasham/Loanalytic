@@ -177,10 +177,10 @@ app.controller('navController',function($scope){
           // This function handles succes
           console.log(response); 
           var data = {
-            "subject": "User Registration",
-            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Welcome to Loanalytic</h1>',
-            "email": $scope.user.email,
-            "src":"register.png"
+            "subject": "Profile update",
+            "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;"> Hello '+$scope.user.FirstName+ ', your profile has been updated successfully</h1>',
+            "email": $scope.user.Email,
+            "src":"updated.jpg"
         }
         $http.post('http://localhost:3000/register/sendEmail', data, config).then(function(response) {
             // This function handles succes

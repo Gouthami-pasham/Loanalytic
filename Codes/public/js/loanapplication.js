@@ -229,7 +229,7 @@ app.controller('formCtrl', function($scope, $http) {
                       $('#spinner').hide();
                   });
               var data = {
-                  "subject": "Loan Application",
+                  "subject": "Loan Application status",
                   "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Your Loan Application created sucessfully</h1>',
                   "email": $scope.loanApplication.email,
                   "src": "apply.png"
