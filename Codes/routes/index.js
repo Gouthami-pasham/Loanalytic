@@ -27,10 +27,21 @@ router.get('/', function (req, res) {
 router.get('/adminhome', function (req, res) {
     res.render('adminhome.ejs', { title: 'Login' });
 });
+router.get('/editprofile', function (req, res) {
+    res.render('editprofile.ejs', { title: 'Edit Profile' });
+});
+
+router.get('/verifyuser', function (req, res) {
+    res.render('verifyuser.ejs', { title: 'Verify User' });
+});
 
 
 router.get('/userhome', function (req, res) {
     res.render('userhome.ejs', { title: 'Login' });
+});
+
+router.get('/profile', function (req, res) {
+    res.render('profile.ejs', { title: 'Profile' });
 });
 
 // router.get('/loanapplication', function (req, res) {

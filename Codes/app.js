@@ -1,8 +1,9 @@
 ﻿'use strict';
 var debug = require('debug');
 var express = require('express');
+var app = express();
 var path = require('path');
-var http = require('http');
+var http = require('http').createServer(app);
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -20,6 +21,12 @@ var loancalculator = require('./routes/loancalculator');
 var loancalculator_education = require('./routes/loancalculator_education');
 var fileUpload = require('express-fileupload')
 var io = require('socket.io')(http);
+var SimpleCrypto = require("simple-crypto-js").default;
+var _secretKey = "some-unique-key";
+ 
+var simpleCrypto = new SimpleCrypto(_secretKey);
+ 
+
 
 io.on('connection', function(socket){
   console.log('a user connected');
@@ -27,7 +34,7 @@ io.on('connection', function(socket){
 
 var registrationController = require('./controllers/registration');
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +62,16 @@ app.use('/userhome',function (req, res) {
 });
 
 
+// on a connection event, act as follows (socket interacts with client)
+io.on('connection', function (socket) {
+    socket.on('chatMessage', function (from, msg) {  // on getting a chatMessage event
+      io.emit('chatMessage', from, msg)  // emit it to all connected clients
+    })
+    socket.on('notifyUser', function (user) {  // on getting a notifyUser event
+      io.emit('notifyUser', user)  // emit to all
+    })
+  })
+
 // catch 404 and forward to error handler
 
 
@@ -78,6 +95,6 @@ app.use(function (err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 
-var server = http.createServer(app).listen(app.get('port'), function(){
+var server = http.listen(app.get('port'), function(){
     console.log('Express server listening on port ' + server.address().address + app.get('port'));
   });
