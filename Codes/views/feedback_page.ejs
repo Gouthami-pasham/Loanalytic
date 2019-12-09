@@ -1,4 +1,36 @@
 <% include layout.ejs %>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let stars = document.querySelectorAll('.star');
+        stars.forEach(function(star){
+            star.addEventListener('click', setRating);
+        });
+
+        let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+        let target = stars[rating - 1];
+        target.dispatchEvent(new MouseEvent('click'));
+    });
+    function setRating(ev){
+        let span = ev.currentTarget;
+        let stars = document.querySelectorAll('.star');
+        let match = false;
+        let num = 0;
+        stars.forEach(function(star, index){
+            if(match){
+                star.classList.remove('rated');
+            }else{
+                star.classList.add('rated');
+            }
+
+            if(star === span){
+                match = true;
+                num = index + 1;
+            }
+        });
+        document.querySelector('.stars').setAttribute('data-rating', num);
+    }
+
+</script>
 <div class="container">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
@@ -48,6 +80,16 @@
 
 <!-- rating.js file -->
 
+<b> <label class="header_color" id="pas" for="text">How would you rate us?</label></b><br>
+
+
+<div class="stars" data-rating="3">
+    <span class="star">&nbsp;</span>
+    <span class="star">&nbsp;</span>
+    <span class="star">&nbsp;</span>
+    <span class="star">&nbsp;</span>
+    <span class="star">&nbsp;</span>
+</div>
 
 
 <b> <label class="header_color" id="pas" for="text">Please share your experience</label></b><br>
@@ -62,21 +104,17 @@
 </div>
 
 <div class="jumbotron w-100 p-3">
-<form>
-<p>Should create something like this dynamically, looks intresting but might be complicated</p>
-<img src="../../images/this_is_an_example.jpg" alt="">
-
-
-
-
-</form>
+  <div class="row">
+   <div class="col-2">
+<p>this is a column</p>
+     </div>
+     <div class="col-10">
+  <p>this is a column</p>
+       </div>
+     </div>
 </div>
 </div>
-
 </div>
-
-
       <% include footer.ejs %>
-
     </body>
     </html>
