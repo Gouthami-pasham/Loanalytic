@@ -35,9 +35,9 @@ router.post('/createuser', function (req, res) {
    // res.json(req.body);
 });
 
-router.post('/getUserById', function (req, res) {
+router.post('/updateUser', function (req, res) {
     console.log(JSON.stringify(req.body));
-    /*registration.getUserById(req.body,function(err,count){
+    registration.updateUser(req.body,function(err,count){
         if(err)
         {
             res.json(err);
@@ -45,8 +45,38 @@ router.post('/getUserById', function (req, res) {
         else{
             res.json(count);
         }
-    });*/
-    res.json(req.body);
+    });
+   // res.json(req.body);
+});
+
+router.get('/activateUser/:email', function (req, res) {
+   // console.log(JSON.stringify(req.body));
+   var email = req.params.email;
+    registration.activateUserById(email,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+           // res.json(count);
+           res.render('verifyuser.ejs', { title: 'Verify User'});
+        }
+    });
+    //res.send("email is set to " + req.params.email);
+});
+
+router.post('/getUserById', function (req, res) {
+    console.log(JSON.stringify(req.body));
+    registration.getUserById(req.body,function(err,count){
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(count);
+        }
+    });
+   // res.json(req.body);
 });
 
 
