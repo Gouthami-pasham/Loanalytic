@@ -29,23 +29,48 @@
 
 <div class="jumbotron w-100 p-3">
 
-<form class="form-group" action="" method="get">
+<form class="form-group needs-validation" novalidate ng-controller="contactCtrl" id="contact" ng-init="getUser()">
   <h2 class="header_color align-items-center">Contact us</h2>
-<p class="text-danger">Got a question? we'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-<b> <label class="header_color" id="pas" for="Name">Name</label></b>
-<input class="form-control" type="text" id="Name" value=""><br>
+  <p class="text-danger">Got a question? we'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+  <b> <label class="header_color" id="pas" for="Name">Name</label></b>
+  <input class="form-control" type="text" id="Name" value="" required ng-model="contactForm.name" /><br>
+  <div class="valid-feedback">
+    Looks good!
+   </div>
+   <div class="invalid-feedback">
+     Please provide Name / valid Name!
+   </div>
+  <b> <label class="header_color"  for="email">Email</label></b>
+  <input class="form-control" type="text" id="email" ng-model="contactForm.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/><br>
+  <div class="valid-feedback">
+    Looks good!
+   </div>
+   <div class="invalid-feedback">
+     Please provide Email / valid Email!
+   </div>
 
-<b> <label class="header_color"  for="email">Email</label></b>
-<input class="form-control" type="text" id="email" value=""><br>
+  <b> <label class="header_color" id="pas" for="text" >Enter your message</label></b><br>
+  <textarea class="form-control" name="text" required  ng-model="contactForm.message" ></textarea><br>
+  <div class="valid-feedback">
+    Looks good!
+   </div>
+   <div class="invalid-feedback">
+     Please provide Message / valid Message!
+   </div>
 
-<b> <label class="header_color" id="pas" for="text">Enter your message</label></b><br>
-<textarea class="form-control" name="text" ></textarea><br>
-
-
-<hr class="my-4">
-<a class="btn-info btn-lg" href="/" role="button">cancel</a>
-<a class="btn-danger btn-lg" href="/" role="button">Send</a>
-
+<hr>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <button class="btn btn-primary" > Send </button>
+    </div> 
+ </div>
+  <div class="col">
+    <div class="form-group">
+      <button class="btn btn-primary"  ng-Click="goToHome()" > Cancel </button>
+    </div> 
+  </div>
+</div>
 </form>
 </div>
 </div>
@@ -78,6 +103,28 @@
 </div>
 </div>
 </div>
+</div>
+
+<div class="loading" id="spinner">
+  <div class="loader"></div>
+</div>
+<div id="registerModal" class="modal fade">
+  <div class="modal-dialog modal-confirm">
+     <div class="modal-content">
+        <div class="modal-header">
+           <div class="icon-box">
+              <i class="material-icons">check_circle_outline</i>
+           </div>				
+           <h4 class="modal-title">Success!</h4>	
+        </div>
+        <div class="modal-body">
+           <p class="text-center">Email has been sent to Support Team</p>
+        </div>
+        <div class="modal-footer">
+           <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+        </div>
+     </div>
+  </div>
 </div>
 <div class="container pull-right" id="chatbox">
   <div class="row chat-window col-xs-5 col-md-3 pull-right" id="chat_window_1">
@@ -116,6 +163,6 @@
   </div>
 </div>
       <% include footer.ejs %>
-
+      <script src="../../js/contact.js"></script>
     </body>
     </html>
