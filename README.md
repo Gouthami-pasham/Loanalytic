@@ -77,15 +77,6 @@ Application table has all the information related to the application.
 Loan type is a master table, it has all the in information related to loans. Admin can introduce new loans into the system through the interface.
 ## Credit Score:
 Credit score is a master entity, it stores the basic information of Credit score and the range associated with it.
-## SSN:
-Social security number is the mandatory for the loanalytic.
-## Address proof:
-Address proof is must should for the user to verify his/her existence in same country.
-## Contact us:
-User can mail his query to supp.lonaltyics@gmail.com
-## Feedback page:
-User can give feedback to the after completing the loan.
-User can rate his/her over all experience.
 
 
 
