@@ -85,7 +85,7 @@ Address proof is must should for the user to verify his/her existence in same co
 User can mail his query to supp.lonaltyics@gmail.com
 ## Feedback page:
 User can give feedback to the after completing the loan.
-User can rate his/her over all ec
+User can rate his/her over all.
 
 
 
