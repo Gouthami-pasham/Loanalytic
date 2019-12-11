@@ -1,5 +1,17 @@
 <% include layout.ejs %>
 <script>
+
+  function myFunction() {
+    var loanAmt = document.getElementById("TA");
+    var prin_intr= loanAmt.value;
+//    var stars= data-rating;
+  //  document.getElementById("rat").innerHTML = ""+stars;
+
+  document.getElementById("display").innerHTML = ""+prin_intr;
+//  return prin_intr;
+  }
+
+
     document.addEventListener('DOMContentLoaded', function(){
         let stars = document.querySelectorAll('.star');
         stars.forEach(function(star){
@@ -93,12 +105,12 @@
 
 
 <b> <label class="header_color" id="pas" for="text">Please share your experience</label></b><br>
-<textarea class="form-control" name="text" ></textarea><br>
+<textarea class="form-control" name="text"  id="TA"></textarea><br>
 
 
 <hr class="my-4">
 <a class="btn-danger btn-lg" href="/userhome" role="button">Do not wish to participate</a>
-<a class="btn-info btn-lg" href="/userhome" role="button">Submit</a>
+<a class="btn-info btn-lg" role="button" onclick="myFunction()">Submit</a>
 
 </form>
 </div>
@@ -106,10 +118,10 @@
 <div class="jumbotron w-100 p-3">
   <div class="row">
    <div class="col-2">
-<p>this is a column</p>
+<p id="rat">data-rating</p>
      </div>
      <div class="col-10">
-  <p>this is a column</p>
+  <p id="display"></p>
        </div>
      </div>
 </div>
