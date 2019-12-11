@@ -79,6 +79,8 @@ Loan type is a master table, it has all the in information related to loans. Adm
 Credit score is a master entity, it stores the basic information of Credit score and the range associated with it.
 ## SSN:
 Social security number is the mandatory for the loanalytic.
+## Address proof:
+Address proof is must should for the user to verify his/her existence in same country.
 
 
 
