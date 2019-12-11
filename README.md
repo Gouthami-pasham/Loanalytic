@@ -83,8 +83,9 @@ Social security number is the mandatory for the loanalytic.
 Address proof is must should for the user to verify his/her existence in same country.
 ## Contact us:
 User can mail his query to supp.lonaltyics@gmail.com
-## Feedback page
+## Feedback page:
 User can give feedback to the after completing the loan.
+User can rate his/her over all experience.
 
 
 
