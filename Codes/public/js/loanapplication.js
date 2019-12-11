@@ -138,6 +138,9 @@ app.controller('formCtrl', function($scope, $http) {
   $scope.calculateInterest = function(total,year,rate){
       return (rate/ 100) * total;
   },
+  $scope.goToHome = function(){
+    location.href = '/userhome';
+},
 
   $scope.calculatePremium = function(){
     var loanTerm = $scope.loanApplication.loanTerm;
@@ -229,7 +232,7 @@ app.controller('formCtrl', function($scope, $http) {
                       $('#spinner').hide();
                   });
               var data = {
-                  "subject": "Loan Application status",
+                  "subject": "Loan Application status #" + $scope.loanApplication.applicationId,
                   "text": '<img src="cid:unique@kreata.ee" width="600px" height="500px" /> <br><h1 style="color:#008f95;">Your Loan Application created sucessfully</h1>',
                   "email": $scope.loanApplication.email,
                   "src": "apply.png"

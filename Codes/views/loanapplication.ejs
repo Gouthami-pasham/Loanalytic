@@ -18,6 +18,15 @@
    margin-left:0;
    vertical-align: middle;
 }
+
+span.badge.badge-primary {
+    background: #008f95 !important;
+    font-weight: 200;
+}
+
+button#submit {
+    background: #008f95 !important;
+}
  
 </style>
 <div class="container">
@@ -31,7 +40,7 @@
       <div class="form-group col-sm-6 col-md-6">
                
           <!-- <label class="col-md-6 control-label" for="payment">Loan Type</label> -->
-      <h3><span class="badge badge-light">Loan Type</span></h3>
+      <h3><span class="badge badge-primary">Loan Type</span></h3>
           <div class="col-md-8">
              <select id="loanType" class="form-control" required  ng-model="loanApplication.loanType">
                 <option value="">Loan Type</option>
@@ -275,9 +284,14 @@
              </div> <!-- -->
              
             <div class="form-group col-sm-12">
-               <div class="col-sm-12 text-center">
+               <div class="row">
+               <div class="col-sm-6 text-center">
                   <button id="submit" name="submit" class="btn btn-success">Submit</button>
                </div>
+               <div class="col-sm-6 text-center">
+                  <a href="/userhome" id="cancel" class="btn btn-danger" >Cancel</a>
+               </div>
+            </div>
             </div>
          </div>
    </fieldset>
