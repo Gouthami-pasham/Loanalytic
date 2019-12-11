@@ -81,7 +81,8 @@ Credit score is a master entity, it stores the basic information of Credit score
 Social security number is the mandatory for the loanalytic.
 ## Address proof:
 Address proof is must should for the user to verify his/her existence in same country.
-
+## Contact us:
+User can mail his query to supp.lonaltyics@gmail.com
 
 
 
